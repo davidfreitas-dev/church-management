@@ -5,6 +5,9 @@
     <ion-content :fullscreen="true">
       <div class="container">
         <!-- Content Here -->
+        <p class="title">Lorem ipsum dolor sit amet</p>
+        <p class="sub-title">Lorem ipsum dolor sit amet</p>
+        <p class="">Lorem ipsum dolor sit amet</p>
       </div>
     </ion-content>
   </ion-page>

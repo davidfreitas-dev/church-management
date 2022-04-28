@@ -15,6 +15,40 @@
 	--danger-hover: #ff7d69;
 }
 
+.title {
+	font-size: 1.3rem;
+	font-weight: 700;
+	letter-spacing: .35px;
+}
+
+.sub-title {
+	font-size: 1.1rem;
+	font-weight: 700;
+	letter-spacing: .5px;
+}
+
+.description {
+	font-size: .9rem;
+	font-weight: 400;
+	letter-spacing: .5px;
+}
+
+.text-white {
+	color: var(--font-white);
+}
+
+.text-dark {
+	color: var(--font-dark);
+}
+
+.text-light {
+	color: var(--font-light);
+}
+
+.text-thin {
+	font-weight: 300 !important;
+}
+
 .container {
     width: 90%;
     margin: .85rem auto;
@@ -34,9 +68,4 @@
 	width: 90%;
 	margin: 0 auto;
 	color: var(--font-dark);
-}
-
-.nav-title {
-	font-size: 1.25rem;
-	font-weight: 500;
 }
