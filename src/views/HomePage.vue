@@ -11,11 +11,15 @@
         
         <!-- Buttons -->
         <button class="btn-icon bg-primary">
-          <ion-icon name="rocket-outline"></ion-icon>
+          <ion-icon name="rocket"></ion-icon>
         </button><br />
         <button class="btn-small bg-alert">Button</button><br />
         <button class="btn-default bg-danger">Button Default</button>
         <button class="btn-large bg-success">Button Large</button>
+
+        <!-- Inputs -->
+        <input type="text" placeholder="Type your name here" class="form-input" />
+        <input type="text" placeholder="Input Disabled" class="form-input" disabled>
       </div>
     </ion-content>
   </ion-page>
