@@ -1,6 +1,6 @@
 <template>
   <ion-page>
-    <header-top></header-top>
+    <header-top :title="'App Design System'"></header-top>
     
     <ion-content :fullscreen="true">
       <div class="container">
@@ -10,8 +10,11 @@
         <p class="description">Lorem ipsum dolor sit amet</p>
         
         <!-- Buttons -->
-        <button class="btn-small bg-primary">N</button><br />
-        <button class="btn-default bg-alert">Button</button>
+        <button class="btn-icon bg-primary">
+          <ion-icon name="rocket-outline"></ion-icon>
+        </button><br />
+        <button class="btn-small bg-alert">Button</button><br />
+        <button class="btn-default bg-danger">Button Default</button>
         <button class="btn-large bg-success">Button Large</button>
       </div>
     </ion-content>
@@ -19,12 +22,12 @@
 </template>
 
 <script>
-import { IonContent, IonPage } from '@ionic/vue';
+import { IonContent, IonPage, IonIcon } from '@ionic/vue';
 import HeaderTop from '@/components/HeaderTop.vue';
 
 export default ({
   name: 'HomePage',
-  components: { IonContent,  IonPage, HeaderTop }
+  components: { IonContent,  IonPage, IonIcon, HeaderTop }
 });
 </script>
 

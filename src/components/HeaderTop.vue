@@ -1,14 +1,19 @@
 <template>
     <div class="header">
         <nav class="nav">
-            <div class="title">Church Management</div>
+            <div class="title">{{ title }}</div>
         </nav>
     </div>
 </template>
 
 <script>
 export default {
-
+    props: {
+        title: {
+            type: String,
+            default: ''
+        },
+    },
 }
 </script>
 

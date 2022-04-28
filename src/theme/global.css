@@ -52,11 +52,27 @@
 	font-weight: 300 !important;
 }
 
-.btn-small {
-	padding: 1rem;
+.btn-icon {
 	margin: .25rem;
+	padding: .85rem;
+	font-size: 1.35rem;
 	letter-spacing: .5px;
 	border-radius: 10px;
+}
+
+.btn-icon ion-icon {
+	--ionicon-stroke-width: 2.5rem;
+}
+
+.btn-small {
+	width: auto;
+	height: 30px;
+	margin: .25rem;
+	padding: 0 1.35rem;
+	font-size: .85rem;
+	font-weight: 700;
+	letter-spacing: .5px;
+	border-radius: 7px;
 }
 
 .btn-default {
@@ -71,9 +87,9 @@
 }
 
 .btn-large {
-	width: 90%;
+	width: 97%;
 	height: 45px;
-	margin: .25rem;
+	margin: .25rem 1.5%;
 	font-size: 1rem;
 	font-weight: 700;
 	letter-spacing: .5px;
