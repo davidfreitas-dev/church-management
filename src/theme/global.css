@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
+:root {
+    --font-light: #a7b6c9;
+    --font-dark: #2b3842;
+    --font-white: #ffffff;
+    --bg-color: #ffffff;
+	--primary: #456efe;
+	--primary-hover: #577cfe;
+	--success: #1ccd9d;
+	--success-hover: #3dd4ab;
+	--alert: #fcaf2a;
+	--alert-hover: #fcbb49;
+	--danger: #ff6951;
+	--danger-hover: #ff7d69;
+}
+
+.container {
+    width: 90%;
+    margin: .85rem auto;
+}
+
+.header {
+	width: 100%;
+	height: 50px;
+	display: flex;
+	justify-content: space-between;
+	z-index: 1;
+	align-items: center;
+	background-color: var(--bg-color);
+}
+
+.nav {
+	width: 90%;
+	margin: 0 auto;
+	color: var(--font-dark);
+}
+
+.nav-title {
+	font-size: 1.25rem;
+	font-weight: 500;
+}
