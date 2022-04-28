@@ -37,15 +37,47 @@
 }
 
 .text-white {
-	color: var(--font-white);
+	color: var(--font-white) !important;
 }
 
 .text-dark {
-	color: var(--font-dark);
+	color: var(--font-dark) !important;
 }
 
 .text-light {
-	color: var(--font-light);
+	color: var(--font-light) !important;
+}
+
+.text-primary {
+	color: var(--primary) !important;
+}
+
+.text-success {
+	color: var(--success) !important;
+}
+
+.text-danger {
+	color: var(--danger) !important;
+}
+
+.text-alert {
+	color: var(--alert) !important;
+}
+
+.text-primary-light {
+	color: #98adf8 !important;
+}
+
+.text-success-light {
+	color: #beede0 !important;
+}
+
+.text-danger-light {
+	color: #f6aa9e !important;
+}
+
+.text-alert-light {
+	color: #f8dfb7 !important;
 }
 
 .text-thin {
@@ -58,10 +90,6 @@
 	font-size: 1.35rem;
 	letter-spacing: .5px;
 	border-radius: 10px;
-}
-
-.btn-icon ion-icon {
-	--ionicon-stroke-width: 2.5rem;
 }
 
 .btn-small {
@@ -94,6 +122,19 @@
 	font-weight: 700;
 	letter-spacing: .5px;
 	border-radius: 10px;
+}
+
+.btn-link {
+	color: var(--font-dark);
+	width: auto;
+	height: 45px;
+	margin: .25rem;
+	padding: 0 1.85rem;
+	font-size: 1rem;
+	font-weight: 700;
+	letter-spacing: .5px;
+	border-radius: 10px;
+	background-color: transparent;
 }
 
 .bg-primary {
@@ -155,7 +196,7 @@
 
 .form-input {
 	width: 97%;
-	height: 45px;
+	height: 43.5px;
 	margin: .25rem 1.5%;
 	padding: 0 .75rem;
 	outline: none;
@@ -166,4 +207,57 @@
 
 .form-input:disabled {
 	background-color: #ececec;
+}
+
+.cards-wrapper {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.card {
+	width: 47%;
+	height: 170px;
+	margin: .25rem;
+	padding: 1.1rem;
+	border-radius: 25px;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.card-icon {
+	width: 50px;
+	height: 50px;
+	border-radius: 25px;
+	background-color: var(--bg-color);
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 2rem;
+}
+
+.card-content {
+	height: 85px;
+	color: var(--font-white);
+
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: flex-start;
+}
+
+.card-content p {
+	margin: 0;	
+	font-size: 1.1rem;
+	font-weight: 400;
+}
+
+.card-content span {
+	margin: .5rem 0;
+	font-size: 1.35rem !important;
 }

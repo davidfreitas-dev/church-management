@@ -13,13 +13,58 @@
         <button class="btn-icon bg-primary">
           <ion-icon name="rocket"></ion-icon>
         </button><br />
+        
         <button class="btn-small bg-alert">Button</button><br />
         <button class="btn-default bg-danger">Button Default</button>
         <button class="btn-large bg-success">Button Large</button>
+        <button class="btn-link">Button Link</button>
 
         <!-- Inputs -->
         <input type="text" placeholder="Type your name here" class="form-input" />
         <input type="text" placeholder="Input Disabled" class="form-input" disabled>
+
+        <!-- Cards -->
+        <div class="cards-wrapper">
+          <div class="card bg-primary">
+            <div class="card-icon text-primary">
+              <ion-icon name="accessibility"></ion-icon>
+            </div>
+            <div class="card-content">
+              <p class="text-primary-light">Descrição</p>
+              <span>Detalhes</span>
+            </div>
+          </div>
+
+          <div class="card bg-success">
+            <div class="card-icon text-success">
+              <ion-icon name="accessibility"></ion-icon>
+            </div>
+            <div class="card-content">
+              <p class="text-success-light">Descrição</p>
+              <span>Detalhes</span>
+            </div>
+          </div>
+
+          <div class="card bg-danger">
+            <div class="card-icon text-danger">
+              <ion-icon name="accessibility"></ion-icon>
+            </div>
+            <div class="card-content">
+              <p class="text-danger-light">Descrição</p>
+              <span>Detalhes</span>
+            </div>
+          </div>
+
+          <div class="card bg-alert">
+            <div class="card-icon text-alert">
+              <ion-icon name="accessibility"></ion-icon>
+            </div>
+            <div class="card-content">
+              <p class="text-alert-light">Descrição</p>
+              <span>Detalhes</span>
+            </div>
+          </div>
+        </div>
       </div>
     </ion-content>
   </ion-page>
