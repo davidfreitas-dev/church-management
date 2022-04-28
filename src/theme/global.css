@@ -19,18 +19,21 @@
 	font-size: 1.3rem;
 	font-weight: 700;
 	letter-spacing: .35px;
+	padding: 0 .25rem;
 }
 
 .sub-title {
 	font-size: 1.1rem;
 	font-weight: 700;
 	letter-spacing: .5px;
+	padding: 0 .25rem;
 }
 
 .description {
 	font-size: .9rem;
 	font-weight: 400;
 	letter-spacing: .5px;
+	padding: 0 .25rem;
 }
 
 .text-white {
@@ -47,6 +50,70 @@
 
 .text-thin {
 	font-weight: 300 !important;
+}
+
+.btn-small {
+	padding: 1rem;
+	margin: .25rem;
+	letter-spacing: .5px;
+	border-radius: 10px;
+}
+
+.btn-default {
+	width: auto;
+	height: 45px;
+	margin: .25rem;
+	padding: 0 1.85rem;
+	font-size: 1rem;
+	font-weight: 700;
+	letter-spacing: .5px;
+	border-radius: 10px;
+}
+
+.btn-large {
+	width: 90%;
+	height: 45px;
+	margin: .25rem;
+	font-size: 1rem;
+	font-weight: 700;
+	letter-spacing: .5px;
+	border-radius: 10px;
+}
+
+.bg-primary {
+	color: var(--font-white);
+	background-color: var(--primary);
+}
+
+.bg-primary:hover {	
+	background-color: var(--primary-hover);
+}
+
+.bg-success {
+	color: var(--font-white);
+	background-color: var(--success);
+}
+
+.bg-success:hover {
+	background-color: var(--success-hover);
+}
+
+.bg-alert {
+	color: var(--font-white);
+	background-color: var(--alert);
+}
+
+.bg-alert:hover {
+	background-color: var(--alert-hover);
+}
+
+.bg-danger {
+	color: var(--font-white);
+	background-color: var(--danger);
+}
+
+.bg-primary:hover {
+	background-color: var(--primary-hover);
 }
 
 .container {

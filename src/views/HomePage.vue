@@ -4,10 +4,15 @@
     
     <ion-content :fullscreen="true">
       <div class="container">
-        <!-- Content Here -->
+        <!-- Typography -->
         <p class="title">Lorem ipsum dolor sit amet</p>
         <p class="sub-title">Lorem ipsum dolor sit amet</p>
-        <p class="">Lorem ipsum dolor sit amet</p>
+        <p class="description">Lorem ipsum dolor sit amet</p>
+        
+        <!-- Buttons -->
+        <button class="btn-small bg-primary">N</button><br />
+        <button class="btn-default bg-alert">Button</button>
+        <button class="btn-large bg-success">Button Large</button>
       </div>
     </ion-content>
   </ion-page>
