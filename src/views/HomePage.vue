@@ -30,8 +30,8 @@
               <ion-icon name="accessibility"></ion-icon>
             </div>
             <div class="card-content">
-              <p class="text-primary-light">Descrição</p>
-              <span>Detalhes</span>
+              <p class="text-primary-light">Description</p>
+              <span>Details</span>
             </div>
           </div>
 
@@ -40,8 +40,8 @@
               <ion-icon name="accessibility"></ion-icon>
             </div>
             <div class="card-content">
-              <p class="text-success-light">Descrição</p>
-              <span>Detalhes</span>
+              <p class="text-success-light">Description</p>
+              <span>Details</span>
             </div>
           </div>
 
@@ -50,8 +50,8 @@
               <ion-icon name="accessibility"></ion-icon>
             </div>
             <div class="card-content">
-              <p class="text-danger-light">Descrição</p>
-              <span>Detalhes</span>
+              <p class="text-danger-light">Description</p>
+              <span>Details</span>
             </div>
           </div>
 
@@ -60,8 +60,8 @@
               <ion-icon name="accessibility"></ion-icon>
             </div>
             <div class="card-content">
-              <p class="text-alert-light">Descrição</p>
-              <span>Detalhes</span>
+              <p class="text-alert-light">Description</p>
+              <span>Details</span>
             </div>
           </div>
         </div>
