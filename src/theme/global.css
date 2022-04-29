@@ -23,21 +23,21 @@
 	font-size: 1.3rem;
 	font-weight: 700;
 	letter-spacing: .35px;
-	padding: 0 .25rem;
+	padding: 0 .35rem;
 }
 
 .sub-title {
 	font-size: 1.1rem;
 	font-weight: 700;
 	letter-spacing: .5px;
-	padding: 0 .25rem;
+	padding: 0 .35rem;
 }
 
 .description {
 	font-size: .9rem;
 	font-weight: 400;
 	letter-spacing: .5px;
-	padding: 0 .25rem;
+	padding: 0 .35rem;
 }
 
 .text-white {
@@ -230,15 +230,15 @@
 	width: 100%;
 	margin: .5rem 0;
 	display: flex;
-	justify-content: center;
+	justify-content: space-between;
 	align-items: center;
 	flex-wrap: wrap;
 }
 
 .card {
-	width: 45%;
+	width: 46.5%;
 	height: 145px;
-	margin: .5rem;
+	margin: .35rem .25rem;
 	padding: 1rem;
 	border-radius: 25px;
 
@@ -279,3 +279,46 @@
 	margin: .15rem 0;
 	font-size: 1.15rem !important;
 }
+
+.tags-wrapper {
+	width: 100%;
+	margin: .5rem 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.tag {
+	width: 46.5%;
+	height: 65px;
+	margin: .35rem .25rem;
+	padding: .75rem;
+	border-radius: 10px;
+	box-shadow: 5px 5px 25px -5px rgba(0,0,0,0.1);
+
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.tag-icon {
+	width: 40px;
+	height: 40px;
+	font-size: 1.3rem;
+	border-radius: 10px;
+	color: var(--font-white);
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.tag-content {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-weight: 700;
+	padding-left: .5rem;
+}
+
