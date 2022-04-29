@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap');
 
 :root {
     --font-light: #a7b6c9;
@@ -13,6 +13,10 @@
 	--alert-hover: #fcbb49;
 	--danger: #ff6951;
 	--danger-hover: #ff7d69;
+}
+
+* {
+	font-family: 'Nunito', sans-serif;
 }
 
 .title {
@@ -233,7 +237,7 @@
 
 .card {
 	width: 45%;
-	height: 150px;
+	height: 145px;
 	margin: .5rem;
 	padding: 1rem;
 	border-radius: 25px;
@@ -244,8 +248,8 @@
 }
 
 .card-icon {
-	width: 45px;
-	height: 45px;
+	width: 43px;
+	height: 43px;
 	font-size: 1.5rem;
 	border-radius: 25px;
 	background-color: var(--bg-color);
@@ -256,7 +260,7 @@
 }
 
 .card-content {
-	height: 70px;
+	height: 65px;
 	color: var(--font-white);
 
 	display: flex;
@@ -272,6 +276,6 @@
 }
 
 .card-content span {
-	margin: .35rem 0;
+	margin: .15rem 0;
 	font-size: 1.15rem !important;
 }
