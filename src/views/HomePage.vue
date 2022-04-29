@@ -14,6 +14,7 @@
           <ion-icon name="rocket"></ion-icon>
         </button><br />
         
+        <button class="btn-rounded">Rounded</button><br />
         <button class="btn-small bg-alert">Button</button><br />
         <button class="btn-default bg-danger">Button Default</button>
         <button class="btn-large bg-success">Button Large</button>
