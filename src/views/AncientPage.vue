@@ -1,43 +1,25 @@
 <template>
   <ion-page>
-    <header-top :title="'Ancionato'"></header-top>
+    <header-top :title="'Ancionato'" :back-route="backRoute"></header-top>
     
     <ion-content :fullscreen="true">
       <div class="container">
         <div class="tags-wrapper">
-          <div class="tag">            
+          <div class="tag" @click="this.$router.push('/preachers-timeline')">            
             <div class="tag-icon bg-primary">
-              <ion-icon name="rocket"></ion-icon>
+              <ion-icon name="calendar-number"></ion-icon>
+            </div>
+            <div class="tag-content">
+              <span>Escala</span>
+            </div>
+          </div>
+
+          <div class="tag" @click="this.$router.push('/preachers-list')">
+            <div class="tag-icon bg-alert">
+              <ion-icon name="people"></ion-icon>
             </div>
             <div class="tag-content">
               <span>Pregadores</span>
-            </div>
-          </div>
-
-          <div class="tag">            
-            <div class="tag-icon bg-success">
-              <ion-icon name="rocket"></ion-icon>
-            </div>
-            <div class="tag-content">
-              <span>Reuniões</span>
-            </div>
-          </div>
-
-          <div class="tag">            
-            <div class="tag-icon bg-danger">
-              <ion-icon name="rocket"></ion-icon>
-            </div>
-            <div class="tag-content">
-              <span>Anúncios</span>
-            </div>
-          </div>
-
-          <div class="tag">            
-            <div class="tag-icon bg-alert">
-              <ion-icon name="rocket"></ion-icon>
-            </div>
-            <div class="tag-content">
-              <span>Obs</span>
             </div>
           </div>
         </div>
@@ -52,7 +34,12 @@ import HeaderTop from '@/components/HeaderTop.vue';
 
 export default ({
   name: 'HomePage',
-  components: { IonContent,  IonPage, IonIcon, HeaderTop }
+  components: { IonContent,  IonPage, IonIcon, HeaderTop },
+  data() {
+    return {
+      backRoute: '/home'
+    }
+  },
 });
 </script>
 

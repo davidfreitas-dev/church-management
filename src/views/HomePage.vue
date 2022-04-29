@@ -10,7 +10,7 @@
         <div class="departments cards-wrapper">
           <div class="card bg-success" @click="$router.push('/design-system')">
             <div class="card-icon text-success">
-              <ion-icon name="book"></ion-icon>
+              <ion-icon name="cog"></ion-icon>
             </div>
             <div class="card-content">
               <p class="text-success-light">Recurso</p>

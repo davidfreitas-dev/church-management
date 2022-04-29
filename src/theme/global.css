@@ -38,6 +38,7 @@
 	font-weight: 400;
 	letter-spacing: .5px;
 	padding: 0 .35rem;
+	margin: 0;
 }
 
 .text-white {
@@ -307,9 +308,9 @@
 }
 
 .tag-icon {
-	width: 40px;
-	height: 40px;
-	font-size: 1.3rem;
+	width: 35px;
+	height: 35px;
+	font-size: 1.15rem;
 	border-radius: 10px;
 	color: var(--font-white);
 

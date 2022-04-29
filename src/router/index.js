@@ -21,6 +21,11 @@ const routes = [
     name: 'ancient',
     component: () => import('../views/AncientPage.vue')
   },
+  {
+    path: '/preachers-timeline',
+    name: 'preachers-timeline',
+    component: () => import('../views/PreachersTimeLine.vue')
+  },
 ]
 
 const router = createRouter({

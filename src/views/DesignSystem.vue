@@ -1,6 +1,6 @@
 <template>
   <ion-page>
-    <header-top :title="'App Design System'"></header-top>
+    <header-top :title="'App Design System'" :back-route="backRoute"></header-top>
     
     <ion-content :fullscreen="true">
       <div class="container">
@@ -116,7 +116,12 @@ import HeaderTop from '@/components/HeaderTop.vue';
 
 export default ({
   name: 'HomePage',
-  components: { IonContent,  IonPage, IonIcon, HeaderTop }
+  components: { IonContent,  IonPage, IonIcon, HeaderTop },
+  data() {
+    return {
+      backRoute: '/home'
+    }
+  },
 });
 </script>
 

@@ -8,7 +8,7 @@
             <div class="title">{{ title }}</div>
 
             <div class="icon-button">
-                <ion-icon name="notifications-outline"></ion-icon>
+                <ion-icon name="notifications-outline" v-show="false"></ion-icon>
             </div>
         </nav>
     </div>
@@ -23,31 +23,17 @@ export default {
             type: String,
             default: ''
         },
+        backRoute: {
+            type: String,
+            default: '/'
+        }
     },
     components: {
         IonIcon,
     },
-    computed: {
-        routeFrom() {
-            return this.$store.getters.routeFrom;
-        }
-    },
-    watch: { 
-        '$route': {
-            deep: true,
-            handler(to, from) {
-                this.$store.dispatch('setRouteFrom', from.path);
-            },
-        }
-    },
-    data() {
-        return {
-            route: null
-        }
-    },
     methods: {
         handleBack() {
-            this.$router.push(this.routeFrom);
+            this.$router.push(this.backRoute);
         }
     },
 }
