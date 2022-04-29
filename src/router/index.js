@@ -10,7 +10,17 @@ const routes = [
     path: '/home',
     name: 'Home',
     component: HomePage
-  }
+  },
+  {
+    path: '/design-system',
+    name: 'design-system',
+    component: () => import('../views/DesignSystem.vue')
+  },
+  {
+    path: '/ancient',
+    name: 'ancient',
+    component: () => import('../views/AncientPage.vue')
+  },
 ]
 
 const router = createRouter({
