@@ -1,51 +1,71 @@
 <template>
-    <div class="container">
-        <div class="timeline">
-            <div class="wrapper left">
-                <div class="content">
-                    <p class="description text-light text-thin">Pregador</p>
-                    <span class="sub-title">David Freitas</span>
-                    <p class="description text-primary">15/03</p>
-                </div>
+    <div class="timeline">
+        <div class="wrapper left">
+            <div class="content">
+                <p class="description text-light text-thin">Pregador</p>
+                <span class="sub-title">David Freitas</span>
+                <p class="description text-primary">15/03</p>
+                <div class="options" @click="handleEdit">:</div>
             </div>
-            <div class="wrapper right">
-                <div class="content">
-                    <p class="description text-light text-thin">Pregador</p>
-                    <span class="sub-title">Alberto Marques</span>
-                    <p class="description text-primary">20/03</p>
-                </div>
+        </div>
+        <div class="wrapper right">
+            <div class="content">
+                <p class="description text-light text-thin">Pregador</p>
+                <span class="sub-title">Alberto Marques</span>
+                <p class="description text-primary">20/03</p>
+                <div class="options" @click="handleEdit">:</div>
             </div>
-            <div class="wrapper left">
-                <div class="content">
-                    <p class="description text-light text-thin">Pregador</p>
-                    <span class="sub-title">Celso Bezerra</span>
-                    <p class="description text-primary">05/04</p>
-                </div>
+        </div>
+        <div class="wrapper left">
+            <div class="content">
+                <p class="description text-light text-thin">Pregador</p>
+                <span class="sub-title">Celso Bezerra</span>
+                <p class="description text-primary">05/04</p>
+                <div class="options" @click="handleEdit">:</div>
             </div>
-            <div class="wrapper right">
-                <div class="content">
-                    <p class="description text-light text-thin">Pregador</p>
-                    <span class="sub-title">Wesley Oliveira</span>
-                    <p class="description text-primary">10/04</p>
-                </div>
+        </div>
+        <div class="wrapper right">
+            <div class="content">
+                <p class="description text-light text-thin">Pregador</p>
+                <span class="sub-title">Wesley Oliveira</span>
+                <p class="description text-primary">10/04</p>
+                <div class="options" @click="handleEdit">:</div>
             </div>
         </div>
     </div>
+    <ion-modal :is-open="showModal" :breakpoints="[0, 0.2, 0.5, 1]" :initialBreakpoint="0.5">
+      <ion-content>
+          <div class="modal-content">
+              <p class="description text-light">Nome do pregador:</p>
+              <input type="text" class="form-input" />
+              <button class="btn-large bg-success">Salvar</button>
+              <button class="btn-link" @click="showModal = false">Cancelar</button>
+          </div>
+      </ion-content>
+    </ion-modal>
 </template>
 
 <script>
-export default {
+import { IonContent, IonModal } from '@ionic/vue';
 
+export default {
+  components: {
+    IonContent, IonModal
+  },
+  data() {
+    return {
+      showModal: false
+    }
+  },
+  methods: {
+    handleEdit() {
+      this.showModal = true;
+    }
+  },
 }
 </script>
 
 <style scoped>
-/* Set a background color */
-body {
-  background-color: #474e5d;
-  font-family: Helvetica, sans-serif;
-}
-
 /* The actual timeline (the vertical ruler) */
 .timeline {
   position: relative;
@@ -132,11 +152,22 @@ body {
 
 /* The actual content */
 .content {
+  position: relative;
   padding: 10px 20px;
   background-color: var(--bg-color);
   box-shadow: -5px 5px 30px -5px rgba(0,0,0,0.1);
   position: relative;
   border-radius: 10px;
+}
+
+.options {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  padding: .5rem 1.3rem;
+  color: var(--font-light);
 }
 
 /* Media queries - Responsive timeline on screens less than 600px wide */
@@ -170,5 +201,15 @@ body {
   .right {
     left: 0%;
   }
+}
+
+.modal-content {
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 </style>
