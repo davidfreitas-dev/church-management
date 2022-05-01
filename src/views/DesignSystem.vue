@@ -1,6 +1,6 @@
 <template>
   <ion-page>
-    <header-top :title="'App Design System'" :back-route="backRoute"></header-top>
+    <header-top :left-button="true" :title="pageTitle" :back-route="backRoute"></header-top>
     
     <ion-content :fullscreen="true">
       <div class="container">
@@ -119,6 +119,7 @@ export default ({
   components: { IonContent,  IonPage, IonIcon, HeaderTop },
   data() {
     return {
+      pageTitle: 'App Design System',
       backRoute: '/home'
     }
   },

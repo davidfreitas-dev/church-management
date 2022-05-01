@@ -1,6 +1,6 @@
 <template>
   <ion-page>
-    <header-top :title="'Ancionato'" :back-route="backRoute"></header-top>
+    <header-top :left-button="true" :title="pageTitle" :back-route="backRoute"></header-top>
     
     <ion-content :fullscreen="true">
       <div class="container">
@@ -11,15 +11,6 @@
             </div>
             <div class="tag-content">
               <span>Escala</span>
-            </div>
-          </div>
-
-          <div class="tag" @click="this.$router.push('/preachers-list')">
-            <div class="tag-icon bg-alert">
-              <ion-icon name="people"></ion-icon>
-            </div>
-            <div class="tag-content">
-              <span>Pregadores</span>
             </div>
           </div>
         </div>
@@ -37,6 +28,7 @@ export default ({
   components: { IonContent,  IonPage, IonIcon, HeaderTop },
   data() {
     return {
+      pageTitle: 'Ancionato',
       backRoute: '/home'
     }
   },

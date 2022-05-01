@@ -1,48 +1,28 @@
 <template>
-    <div class="timeline">
-        <div class="wrapper left">
-            <div class="content">
-                <p class="description text-light text-thin">Pregador</p>
-                <span class="sub-title">David Freitas</span>
-                <p class="description text-primary">15/03</p>
-                <div class="options" @click="handleEdit">:</div>
-            </div>
+  <span class="title" v-if="monthName && year">{{ monthName }}, {{ year }}</span>
+  <div class="timeline">
+    <template v-for="(item, i) in tlData" :key="i">
+      <div class="wrapper right">
+        <div class="content">
+          <p class="description text-light text-thin">{{ item.weekDay }}</p>
+          <span class="sub-title" v-if="item.preacher">{{ item.preacher }}</span>
+          <span class="sub-title" v-else>Pendente</span>
+          <p class="description text-primary">{{ item.date }}</p>
+          <div class="options" @click="handleEdit(item)">:</div>
         </div>
-        <div class="wrapper right">
-            <div class="content">
-                <p class="description text-light text-thin">Pregador</p>
-                <span class="sub-title">Alberto Marques</span>
-                <p class="description text-primary">20/03</p>
-                <div class="options" @click="handleEdit">:</div>
-            </div>
-        </div>
-        <div class="wrapper left">
-            <div class="content">
-                <p class="description text-light text-thin">Pregador</p>
-                <span class="sub-title">Celso Bezerra</span>
-                <p class="description text-primary">05/04</p>
-                <div class="options" @click="handleEdit">:</div>
-            </div>
-        </div>
-        <div class="wrapper right">
-            <div class="content">
-                <p class="description text-light text-thin">Pregador</p>
-                <span class="sub-title">Wesley Oliveira</span>
-                <p class="description text-primary">10/04</p>
-                <div class="options" @click="handleEdit">:</div>
-            </div>
-        </div>
-    </div>
-    <ion-modal :is-open="showModal" :breakpoints="[0, 0.2, 0.5, 1]" :initialBreakpoint="0.5">
-      <ion-content>
-          <div class="modal-content">
-              <p class="description text-light">Nome do pregador:</p>
-              <input type="text" class="form-input" />
-              <button class="btn-large bg-success">Salvar</button>
-              <button class="btn-link" @click="showModal = false">Cancelar</button>
-          </div>
-      </ion-content>
-    </ion-modal>
+      </div>
+    </template>
+  </div>
+  <ion-modal :is-open="showModal" :breakpoints="[0, 0.2, 0.5, 1]" :initialBreakpoint="0.5">
+    <ion-content>
+      <div class="modal-content">
+        <p class="description text-light">Nome do pregador:</p>
+        <input type="text" class="form-input" v-model="preacher"/>
+        <button class="btn-large bg-success" @click="handleConfirm">Salvar</button>
+        <button class="btn-link" @click="showModal = false">Cancelar</button>
+      </div>
+    </ion-content>
+  </ion-modal>
 </template>
 
 <script>
@@ -54,13 +34,100 @@ export default {
   },
   data() {
     return {
-      showModal: false
+      tlData: [],
+      months : ["January","February","March","April","May","June","July","August","September","October","November","December"],
+      year: null,
+      month: null,
+      monthName: null,
+      days: null,
+      preacher: null,
+      showModal: false,
+      item: null
     }
   },
   methods: {
-    handleEdit() {
+    loadData() {
+      const date = new Date();
+      
+      this.year = date.getFullYear();
+      this.month = date.getMonth();
+      this.monthName = this.months[date.getMonth()];
+
+      this.getDaysOfMonth(this.month, this.year);
+      this.setTimeLine(this.days, this.monthName, this.month, this.year);
+    },
+    getDaysOfMonth(month, year) {
+      month--;
+
+      let days = [];
+      let date = new Date(year, month, 1);
+
+      while (date.getMonth() === month) {
+        days.push(date.getDate());
+        date.setDate(date.getDate() + 1);
+      }
+
+      this.days = days;
+    },
+    getDayOfWeek(day, month, year) {
+      const time = '00:00:00';
+
+      const date = new Date(`${month} ${day}, ${year} ${time}`);
+      let weekDay = date.getDay();
+
+      return weekDay;
+    },
+    setTimeLine(days, monthName, month, year) {
+      let data = [];
+
+      days.forEach(day => {
+        const weekDay = this.getDayOfWeek(day, monthName, year);
+        
+        let obj = {}
+
+        switch (weekDay) {
+          case 0:
+            obj.date = day + '/' + month;
+            obj.weekDay = 'Domingo';
+            data.push(obj);
+            break;
+          
+          case 3:
+            obj.date = day + '/' + month;
+            obj.weekDay = 'Quarta';
+            data.push(obj);
+            break;
+
+          case 6:
+            obj.date = day + '/' + month;
+            obj.weekDay = 'Sábado';
+            data.push(obj);
+            break;
+        
+          default:
+            break;
+        }        
+      });
+
+      this.tlData = data;
+    },
+    handleEdit(item) {
       this.showModal = true;
+      this.item = item;
+    },
+    handleConfirm() {
+      this.item.preacher = this.preacher;
+      this.showModal = false;
+      this.preacher = null;
+      this.item = null;
+    },
+    handleSave() {
+      console.log('Salvar no BD', this.tlData);
     }
+  },
+  created () {
+    this.loadData();
+    console.log(this.tlData);
   },
 }
 </script>
@@ -70,7 +137,7 @@ export default {
 .timeline {
   position: relative;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 1rem auto;
 }
 
 /* The actual timeline (the vertical ruler) */

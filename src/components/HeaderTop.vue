@@ -1,14 +1,14 @@
 <template>
     <div class="header">
         <nav class="nav">
-            <div class="back-button" @click="handleBack">
-                <ion-icon name="chevron-back-outline"></ion-icon>
+            <div class="left-button" @click="handleBack">
+                <ion-icon name="chevron-back-outline" v-if="leftButton"></ion-icon>
             </div>
 
             <div class="title">{{ title }}</div>
 
-            <div class="icon-button">
-                <ion-icon name="notifications-outline" v-show="false"></ion-icon>
+            <div class="right-button" @click="$emit('handleClick')">
+                <p class="description text-primary" v-if="rightButton">Salvar</p>
             </div>
         </nav>
     </div>
@@ -18,15 +18,25 @@
 import { IonIcon } from '@ionic/vue';
 
 export default {
+    emits: ['handleClick'],
     props: {
         title: {
             type: String,
             default: ''
         },
+        leftButton: {
+            type: Boolean,
+            default: false
+        },
+        rightButton: {
+            type: Boolean,
+            default: false
+        },
         backRoute: {
             type: String,
             default: '/'
-        }
+        },
+
     },
     components: {
         IonIcon,
@@ -40,7 +50,7 @@ export default {
 </script>
 
 <style socped>
-.back-button {
+.left-button {
     width: 50px;
     height: 50px;
     font-size: 1.5rem;
@@ -52,7 +62,7 @@ export default {
     align-items: center;
 }
 
-.icon-button {
+.right-button {
     width: 50px;
     height: 50px;
     
@@ -61,7 +71,7 @@ export default {
     align-items: center;
 }
 
-.icon-button ion-icon {
+.right-button ion-icon {
     padding: .5rem;
     font-size: 1.1rem;
     border-radius: 10px;

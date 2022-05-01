@@ -1,6 +1,6 @@
 <template>
   <ion-page>
-    <header-top :title="'Church Management'"></header-top>
+    <header-top :title="pageTitle"></header-top>
     
     <ion-content :fullscreen="true">
       <div class="container">
@@ -39,7 +39,12 @@ import HeaderTop from '@/components/HeaderTop.vue';
 
 export default ({
   name: 'HomePage',
-  components: { IonContent,  IonPage, IonIcon, HeaderTop }
+  components: { IonContent,  IonPage, IonIcon, HeaderTop },
+  data() {
+    return {
+      pageTitle: 'Church Management'
+    }
+  },
 });
 </script>
 
