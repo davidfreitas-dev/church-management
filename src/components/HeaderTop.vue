@@ -8,7 +8,7 @@
             <div class="title">{{ title }}</div>
 
             <div class="right-button" @click="$emit('handleClick')">
-                <p class="description text-primary" v-if="rightButton">Salvar</p>
+                <p class="description text-primary text-bold" v-if="rightButton">Salvar</p>
             </div>
         </nav>
     </div>

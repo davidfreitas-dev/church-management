@@ -19,6 +19,11 @@
 	font-family: 'Nunito', sans-serif;
 }
 
+ion-app {
+	margin-top: env(safe-area-inset-top);
+	margin-bottom: env(safe-area-inset-bottom)
+}
+
 .title {
 	font-size: 1.3rem;
 	font-weight: 700;
@@ -87,6 +92,10 @@
 
 .text-thin {
 	font-weight: 300 !important;
+}
+
+.text-bold {
+	font-weight: 700 !important;
 }
 
 .btn-icon {
