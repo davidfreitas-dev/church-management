@@ -1,7 +1,8 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router';
-import store from './store.js';
+import store from './store/index';
+import axios from 'axios';
 
 import { IonicVue } from '@ionic/vue';
 
@@ -24,10 +25,15 @@ import '@ionic/vue/css/display.css';
 /* Theme variables */
 import './theme/global.css';
 
+/* Axios BaseURL */
+axios.defaults.baseURL = 'https://church-management-ja-default-rtdb.firebaseio.com/';
+
 const app = createApp(App)
   .use(IonicVue)
   .use(router)
   .use(store);
+
+app.config.globalProperties.$axios = axios;
   
 router.isReady().then(() => {
   app.mount('#app');

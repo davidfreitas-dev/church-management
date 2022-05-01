@@ -1,7 +1,7 @@
 <template>
   <span class="title" v-if="monthName && year">{{ monthName }}, {{ year }}</span>
   <div class="timeline">
-    <template v-for="(item, i) in tlData" :key="i">
+    <template v-for="(item, i) in data" :key="i">
       <div class="wrapper right">
         <div class="content">
           <p class="description text-light text-thin">{{ item.weekDay }}</p>
@@ -32,56 +32,41 @@ export default {
   components: {
     IonContent, IonModal
   },
+  computed: {
+    year() {
+      return this.$store.getters.year;
+    },
+    months() {
+      return this.$store.getters.months;
+    },
+    month() {
+      return this.$store.getters.month;
+    },
+    monthName() {
+      return this.$store.getters.monthName;
+    },
+    days() {
+      return this.$store.getters.days;
+    }
+  },
   data() {
     return {
-      tlData: [],
-      months : ["January","February","March","April","May","June","July","August","September","October","November","December"],
-      year: null,
-      month: null,
-      monthName: null,
-      days: null,
+      data: [],
+      item: null,
       preacher: null,
       showModal: false,
-      item: null
     }
   },
   methods: {
-    loadData() {
-      const date = new Date();
-      
-      this.year = date.getFullYear();
-      this.month = date.getMonth();
-      this.monthName = this.months[date.getMonth()];
-
-      this.getDaysOfMonth(this.month, this.year);
-      this.setTimeLine(this.days, this.monthName, this.month, this.year);
+    getDayOfWeek(day, monthName, year) {
+      const date = new Date(`${monthName} ${day}, ${year} 00:00:00`);
+      return date.getDay();
     },
-    getDaysOfMonth(month, year) {
-      month--;
-
-      let days = [];
-      let date = new Date(year, month, 1);
-
-      while (date.getMonth() === month) {
-        days.push(date.getDate());
-        date.setDate(date.getDate() + 1);
-      }
-
-      this.days = days;
-    },
-    getDayOfWeek(day, month, year) {
-      const time = '00:00:00';
-
-      const date = new Date(`${month} ${day}, ${year} ${time}`);
-      let weekDay = date.getDay();
-
-      return weekDay;
-    },
-    setTimeLine(days, monthName, month, year) {
+    setTimeLine(days, month) {
       let data = [];
 
       days.forEach(day => {
-        const weekDay = this.getDayOfWeek(day, monthName, year);
+        const weekDay = this.getDayOfWeek(day, this.monthName, this.year);
         
         let obj = {}
 
@@ -109,7 +94,7 @@ export default {
         }        
       });
 
-      this.tlData = data;
+      this.data = data;
     },
     handleEdit(item) {
       this.showModal = true;
@@ -121,13 +106,23 @@ export default {
       this.preacher = null;
       this.item = null;
     },
-    handleSave() {
-      console.log('Salvar no BD', this.tlData);
+    async handleSave() {
+      await this.$axios.post('preachers-timeline.json', this.data)
+        .then(async function(res) {
+          if (res.data && res.status === 200) {
+            console.log('Registro efetuado com sucesso!');
+          }
+        })
+        .catch(err => {
+          console.log('Erro ao salvar os dados: ', err);
+        })
+        .finally(() => {
+          // Exibir notificação apos a conslusao da chamada
+        });
     }
   },
   created () {
-    this.loadData();
-    console.log(this.tlData);
+    this.setTimeLine(this.days, this.month);
   },
 }
 </script>

@@ -10,8 +10,10 @@ import { IonApp, IonRouterOutlet } from '@ionic/vue';
 export default ({
   name: 'App',
   components: {
-    IonApp,
-    IonRouterOutlet
-  }
+    IonApp, IonRouterOutlet
+  },
+  created () {
+    this.$store.dispatch('setDate');
+  },
 });
 </script>
