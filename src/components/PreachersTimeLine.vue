@@ -1,14 +1,14 @@
 <template>
   <span class="title" v-if="monthName && year">{{ monthName }}, {{ year }}</span>
-  <div class="timeline">
-    <template v-for="(item, i) in data" :key="i">
+  <div class="timeline" v-if="preachers.timeline.length">
+    <template v-for="(event, i) in preachers.timeline" :key="i">
       <div class="wrapper right">
         <div class="content">
-          <p class="description text-light text-thin">{{ item.weekDay }}</p>
-          <span class="sub-title" v-if="item.preacher">{{ item.preacher }}</span>
+          <p class="description text-light text-thin">{{ event.weekDay }}</p>
+          <span class="sub-title" v-if="event.preacher">{{ event.preacher }}</span>
           <span class="sub-title" v-else>Pendente</span>
-          <p class="description text-primary">{{ item.date }}</p>
-          <div class="options" @click="handleEdit(item)">:</div>
+          <p class="description text-primary">{{ event.date }}</p>
+          <div class="options" @click="handleEdit(event)">:</div>
         </div>
       </div>
     </template>
@@ -32,6 +32,13 @@ export default {
   components: {
     IonContent, IonModal
   },
+  data() {
+    return {
+      event: null,
+      preacher: null,
+      showModal: false,
+    }
+  },
   computed: {
     year() {
       return this.$store.getters.year;
@@ -47,15 +54,10 @@ export default {
     },
     days() {
       return this.$store.getters.days;
-    }
-  },
-  data() {
-    return {
-      data: [],
-      item: null,
-      preacher: null,
-      showModal: false,
-    }
+    },
+    preachers() {
+      return this.$store.state.ancient.preachers;
+    },
   },
   methods: {
     getDayOfWeek(day, monthName, year) {
@@ -63,7 +65,7 @@ export default {
       return date.getDay();
     },
     setTimeLine(days, month) {
-      let data = [];
+      let timeline = [];
 
       days.forEach(day => {
         const weekDay = this.getDayOfWeek(day, this.monthName, this.year);
@@ -74,19 +76,19 @@ export default {
           case 0:
             obj.date = day + '/' + month;
             obj.weekDay = 'Domingo';
-            data.push(obj);
+            timeline.push(obj);
             break;
           
           case 3:
             obj.date = day + '/' + month;
             obj.weekDay = 'Quarta';
-            data.push(obj);
+            timeline.push(obj);
             break;
 
           case 6:
             obj.date = day + '/' + month;
             obj.weekDay = 'Sábado';
-            data.push(obj);
+            timeline.push(obj);
             break;
         
           default:
@@ -94,20 +96,20 @@ export default {
         }        
       });
 
-      this.data = data;
+      this.$store.dispatch('setPreachersTimeline', timeline);
     },
-    handleEdit(item) {
+    handleEdit(event) {
       this.showModal = true;
-      this.item = item;
+      this.event = event;
     },
     handleConfirm() {
-      this.item.preacher = this.preacher;
+      this.event.preacher = this.preacher;
       this.showModal = false;
       this.preacher = null;
-      this.item = null;
+      this.event = null;
     },
     async handleSave() {
-      await this.$axios.post('preachers-timeline.json', this.data)
+      await this.$axios.post('preachers.json', this.preachers)
         .then(async function(res) {
           if (res.data && res.status === 200) {
             console.log('Registro efetuado com sucesso!');

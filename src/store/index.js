@@ -1,29 +1,24 @@
 import { createStore } from 'vuex';
 
-import date from './modules/date'
+import date from './modules/date';
+import ancient from './modules/ancient';
 
 const store = createStore({
     state() {
         return {
-            data: []
+            
         }
     },
     getters: {
-        data(state) {
-            return state.data;
-        }
+        
     },
     mutations: {
-        setData(state, data) {
-            state.data = data;
-        },
+        
     },
     actions: {
-        setData({ commit }, data) {
-            commit('setData', data);
-        },
+        
     },
-    modules: { date }
+    modules: { date, ancient }
 });
 
 export default store;
