@@ -13,6 +13,7 @@
       </div>
     </template>
   </div>
+
   <ion-modal :is-open="showModal" :breakpoints="[0, 0.2, 0.5, 1]" :initialBreakpoint="0.5">
     <ion-content>
       <div class="modal-content">
@@ -23,21 +24,25 @@
       </div>
     </ion-content>
   </ion-modal>
+
+  <toast-message ref="toast" :toast-data="toastData"></toast-message>
 </template>
 
 <script>
 import { IonContent, IonModal } from '@ionic/vue';
 import { mapGetters } from 'vuex';
+import ToastMessage from './ToastMessage.vue';
 
 export default {
   components: {
-    IonContent, IonModal
+    IonContent, IonModal, ToastMessage
   },
   data() {
     return {
       event: null,
       preacher: null,
       showModal: false,
+      toastData: {}
     }
   },
   computed: {
@@ -100,17 +105,19 @@ export default {
       this.event = null;
     },
     async handleSave() {
+      const self = this;
+
       await this.$axios.post('preachers.json', this.preachers)
         .then(async function(res) {
           if (res.data && res.status === 200) {
-            console.log('Registro efetuado com sucesso!');
+            self.toastData = { message: 'Registro efetuado com sucesso!', type: 'success', duration: 1500 }
+            self.$nextTick(() => {
+              self.$refs.toast.setOpen(true);
+            })
           }
         })
         .catch(err => {
           console.log('Erro ao salvar os dados: ', err);
-        })
-        .finally(() => {
-          // Exibir notificação apos a conslusao da chamada
         });
     }
   },
