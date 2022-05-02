@@ -1,19 +1,15 @@
 export default {
-    state() {
-        return {
-            preachers: { 
-                timeline: [], 
-                contacts: [] 
-            }
+    namespaced: true,
+    state: {
+        preachers: { 
+            timeline: [], 
+            contacts: [] 
         }
     },
     getters: {
-        timeline(state) {
-            return state.preachers.timeline;
-        },
-        contacts(state) {
-            return state.preachers.contacts;
-        },
+        preachers(state) {
+            return state.preachers;
+        }
     },
     mutations: {
         setTimeline(state, timeline) {
@@ -24,10 +20,10 @@ export default {
         },
     },
     actions: {
-        setPreachersTimeline({ commit }, timeline) {
+        setTimeline({ commit }, timeline) {
             commit('setTimeline', timeline);
         },
-        setPreachersContacts({ commit }, contacts) {
+        setContacts({ commit }, contacts) {
             commit('setContacts', contacts);
         },
     }

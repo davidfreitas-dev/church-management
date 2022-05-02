@@ -27,6 +27,7 @@
 
 <script>
 import { IonContent, IonModal } from '@ionic/vue';
+import { mapGetters } from 'vuex';
 
 export default {
   components: {
@@ -40,30 +41,16 @@ export default {
     }
   },
   computed: {
-    year() {
-      return this.$store.getters.year;
-    },
-    months() {
-      return this.$store.getters.months;
-    },
-    month() {
-      return this.$store.getters.month;
-    },
-    monthName() {
-      return this.$store.getters.monthName;
-    },
-    days() {
-      return this.$store.getters.days;
-    },
-    preachers() {
-      return this.$store.state.ancient.preachers;
-    },
+    ...mapGetters({
+      year: 'date/year',
+      months: 'date/months',
+      month: 'date/month',
+      monthName: 'date/monthName',
+      days: 'date/days',
+      preachers: 'ancient/preachers'
+    })
   },
   methods: {
-    getDayOfWeek(day, monthName, year) {
-      const date = new Date(`${monthName} ${day}, ${year} 00:00:00`);
-      return date.getDay();
-    },
     setTimeLine(days, month) {
       let timeline = [];
 
@@ -96,7 +83,11 @@ export default {
         }        
       });
 
-      this.$store.dispatch('setPreachersTimeline', timeline);
+      this.$store.dispatch('ancient/setTimeline', timeline);
+    },
+    getDayOfWeek(day, monthName, year) {
+      const date = new Date(`${monthName} ${day}, ${year} 00:00:00`);
+      return date.getDay();
     },
     handleEdit(event) {
       this.showModal = true;
@@ -123,9 +114,11 @@ export default {
         });
     }
   },
-  created () {
-    this.setTimeLine(this.days, this.month);
-  },
+  mounted () {
+    if (!this.preachers.timeline.length) {
+      this.setTimeLine(this.days, this.month);
+    }
+  }
 }
 </script>
 

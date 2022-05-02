@@ -1,12 +1,11 @@
 export default {
-    state() {
-        return {
-            year: null,
-            months: null,
-            monthName: null,
-            month: null,
-            days: null,
-        }
+    namespaced: true,
+    state: {
+        year: null,
+        months: null,
+        monthName: null,
+        month: null,
+        days: null,
     },
     getters: {
         year(state) {

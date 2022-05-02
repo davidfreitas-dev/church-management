@@ -13,7 +13,7 @@ export default ({
     IonApp, IonRouterOutlet
   },
   created () {
-    this.$store.dispatch('setDate');
+    this.$store.dispatch('date/setDate');
   },
 });
 </script>

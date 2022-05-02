@@ -26,9 +26,28 @@ export default ({
     }
   },
   methods: {
+    async loadData() {
+      const self = this;
+
+      await this.$axios.get('preachers.json')
+        .then(async function(res) {
+          if (res.data && res.status === 200) {
+            const key = Object.keys(res.data)[0];
+            const preachers = res.data[key];
+            
+            self.$store.dispatch('ancient/setTimeline', preachers.timeline);
+          }
+        })
+        .catch(err => {
+          console.log('Erro ao carregar os dados: ', err);
+        });
+    },
     handleSaveTimeline() {
       this.$refs.timeline.handleSave();
     }
+  },
+  created () {
+    this.loadData();
   },
 });
 </script>
