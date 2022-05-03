@@ -89,6 +89,7 @@ export default ({
         })
         .catch(err => {
           console.log('Erro ao carregar os dados: ', err);
+          self.handleToast('danger', 'Erro ao carregar os dados');
         });
     },
     setTimeline() {
@@ -139,6 +140,17 @@ export default ({
       this.preacher = null;
       this.event = null;
     },
+    handleToast(type, message) {
+      this.toastData = { 
+        message: message,
+        type: type, 
+        duration: 1500 
+      };
+
+      this.$nextTick(() => {
+        this.$refs.toast.setOpen(true);
+      });
+    },
     async handleSave() {
       const self = this;
       const timelineId = this.timeline.id;
@@ -148,32 +160,24 @@ export default ({
         ? `preachers-timeline/${timelineId}.json` 
         : 'preachers-timeline.json';
 
-      self.$nextTick(() => {
-        self.$refs.loader.setOpen(true);
+      this.$nextTick(() => {
+        this.$refs.loader.setOpen(true);
       });
 
       await this.$axios[method](url, this.timeline.data)
         .then(async function(response) {
           if (response.data) {
-            self.loadData();
-
-            self.toastData = { 
-              message: 'Salvo com sucesso!', 
-              type: 'success', 
-              duration: 1500 
-            }
-
-            self.$nextTick(() => {
-              self.$refs.toast.setOpen(true);
-            })
+            self.handleToast('success', 'Salvo com sucesso!');
+            self.loadData();            
           }
         })
         .catch(err => {
           console.log('Erro ao salvar os dados: ', err);
+          self.handleToast('danger', 'Erro ao salvar os dados');
         })
         .finally(() => {
-          self.$nextTick(() => {
-            self.$refs.loader.setOpen(false);
+          this.$nextTick(() => {
+            this.$refs.loader.setOpen(false);
           });                    
         });
     }
