@@ -164,7 +164,9 @@ export default ({
         this.$refs.loader.setOpen(true);
       });
 
-      await this.$axios[method](url, this.timeline.data)
+      const timeline = timelineId ? { ...this.timeline.data } : this.timeline.data;
+
+      await this.$axios[method](url, timeline)
         .then(async function(response) {
           if (response.data) {
             self.handleToast('success', 'Salvo com sucesso!');
@@ -295,7 +297,7 @@ export default ({
 
 /* Media queries - Responsive timeline on screens less than 600px wide */
 @media screen and (max-width: 600px) {
-/* Place the timelime to the left */
+/* Place the timeline to the left */
   .timeline::after {
     left: 31px;
   }
