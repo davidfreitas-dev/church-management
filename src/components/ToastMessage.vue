@@ -1,5 +1,5 @@
 <template>
-  <ion-toast :is-open="isOpenRef" :message="toastData.message" :color="toastData.type" :duration="toastData.duration" @didDismiss="setOpen(false)"></ion-toast>
+  <ion-toast :is-open="isOpenRef" :message="toastData.message" :color="toastData.color" :duration="1500" @didDismiss="setOpen(false)"></ion-toast>
 </template>
 
 <script>

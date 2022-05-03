@@ -77,19 +77,20 @@ export default ({
       await this.$axios.get('preachers-timeline.json')
         .then(async function(response) {          
           if (response.data) {
-            let timeline = self.timeline;
+            console.log(response.data);
 
-            timeline.id = Object.keys(response.data)[0];
-            timeline.data = response.data[timeline.id];
+            const key = Object.keys(response.data)[0];
+            const data = response.data[key];
+            
+            self.timeline = { id: key, data: data };
 
             return;
           }
 
           self.setTimeline();
         })
-        .catch(err => {
-          console.log('Erro ao carregar os dados: ', err);
-          self.handleToast('danger', 'Erro ao carregar os dados');
+        .catch(error => {
+          self.handleToast('danger', 'Erro ao carregar os dados: ' + error);
         });
     },
     setTimeline() {
@@ -140,16 +141,13 @@ export default ({
       this.preacher = null;
       this.event = null;
     },
-    handleToast(type, message) {
+    handleToast(color, message) {
       this.toastData = { 
-        message: message,
-        type: type, 
-        duration: 1500 
+        color: color,
+        message: message
       };
 
-      this.$nextTick(() => {
-        this.$refs.toast.setOpen(true);
-      });
+      this.$refs.toast.setOpen(true);
     },
     async handleSave() {
       const self = this;
@@ -160,11 +158,9 @@ export default ({
         ? `preachers-timeline/${timelineId}.json` 
         : 'preachers-timeline.json';
 
-      this.$nextTick(() => {
-        this.$refs.loader.setOpen(true);
-      });
+      this.$refs.loader.setOpen(true);
 
-      const timeline = timelineId ? { ...this.timeline.data } : this.timeline.data;
+      const timeline = { ...this.timeline.data };
 
       await this.$axios[method](url, timeline)
         .then(async function(response) {
@@ -173,14 +169,11 @@ export default ({
             self.loadData();            
           }
         })
-        .catch(err => {
-          console.log('Erro ao salvar os dados: ', err);
-          self.handleToast('danger', 'Erro ao salvar os dados');
+        .catch(error => {
+          self.handleToast('danger', 'Erro ao salvar os dados: ' + error);
         })
         .finally(() => {
-          this.$nextTick(() => {
-            this.$refs.loader.setOpen(false);
-          });                    
+          self.$refs.loader.setOpen(false);
         });
     }
   },
