@@ -6,6 +6,7 @@
     <ion-content :fullscreen="true">
       <div class="container">
         <span class="title" v-if="monthName && year">{{ monthName }}, {{ year }}</span>
+
         <div class="timeline" v-if="timeline.data.length">
           <template v-for="(event, i) in timeline.data" :key="i">
             <div class="wrapper right">
@@ -24,7 +25,7 @@
           <ion-content>
             <div class="modal-content">
               <p class="description text-light">Nome do pregador:</p>
-              <input type="text" class="form-input" v-model="preacher"/>
+              <input type="text" class="form-input" v-model="preacher" @keyup.enter="handleConfirm"/>
               <button class="btn-large bg-success" @click="handleConfirm">Salvar</button>
               <button class="btn-link" @click="showModal = false">Cancelar</button>
             </div>
@@ -71,14 +72,17 @@ export default ({
       const self = this;
 
       await this.$axios.get('preachers-timeline.json')
-        .then(async function(res) {
-          if (res.data && res.status === 200) {
-            self.$nextTick(() => {
-              self.timeline = { id: Object.keys(res.data)[0], data: res.data };
-            })
-          } else {
-            self.setTimeline();
+        .then(async function(response) {          
+          if (response.data) {
+            let timeline = self.timeline;
+
+            timeline.id = Object.keys(response.data)[0];
+            timeline.data = response.data[timeline.id];
+
+            return;
           }
+
+          self.setTimeline();
         })
         .catch(err => {
           console.log('Erro ao carregar os dados: ', err);
@@ -134,11 +138,24 @@ export default ({
     },
     async handleSave() {
       const self = this;
+      const timelineId = this.timeline.id;
 
-      await this.$axios.post('preachers-timeline.json', this.timeline.data)
-        .then(async function(res) {
-          if (res.data && res.status === 200) {
-            self.toastData = { message: 'Registro efetuado com sucesso!', type: 'success', duration: 1500 }
+      const method = timelineId ? 'patch' : 'post';
+      const url = timelineId 
+        ? `preachers-timeline/${timelineId}.json` 
+        : 'preachers-timeline.json';
+
+      await this.$axios[method](url, this.timeline.data)
+        .then(async function(response) {
+          if (response.data) {
+            self.loadData();
+
+            self.toastData = { 
+              message: 'Salvo com sucesso!', 
+              type: 'success', 
+              duration: 1500 
+            }
+
             self.$nextTick(() => {
               self.$refs.toast.setOpen(true);
             })
