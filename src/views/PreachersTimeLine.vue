@@ -32,6 +32,8 @@
           </ion-content>
         </ion-modal>
 
+        <loader-box ref="loader"></loader-box>
+        
         <toast-message ref="toast" :toast-data="toastData"></toast-message>
       </div>
     </ion-content>
@@ -42,11 +44,12 @@
 import { IonContent, IonPage, IonModal } from '@ionic/vue';
 import { mapGetters } from 'vuex';
 import HeaderTop from '@/components/HeaderTop.vue';
+import LoaderBox from '@/components/LoaderBox.vue';
 import ToastMessage from '@/components/ToastMessage.vue';
 
 export default ({
   name: 'HomePage',
-  components: { IonContent, IonPage, IonModal, HeaderTop, ToastMessage },
+  components: { IonContent, IonPage, IonModal, HeaderTop, LoaderBox, ToastMessage },
   data() {
     return {
       pageTitle: 'Escala de Pregadores',
@@ -145,6 +148,10 @@ export default ({
         ? `preachers-timeline/${timelineId}.json` 
         : 'preachers-timeline.json';
 
+      self.$nextTick(() => {
+        self.$refs.loader.setOpen(true);
+      });
+
       await this.$axios[method](url, this.timeline.data)
         .then(async function(response) {
           if (response.data) {
@@ -163,6 +170,11 @@ export default ({
         })
         .catch(err => {
           console.log('Erro ao salvar os dados: ', err);
+        })
+        .finally(() => {
+          self.$nextTick(() => {
+            self.$refs.loader.setOpen(false);
+          });                    
         });
     }
   },
