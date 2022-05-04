@@ -11,10 +11,10 @@
           <template v-for="(event, i) in timeline.data" :key="i">
             <div class="wrapper right">
               <div class="content">
-                <p class="description text-light text-thin">{{ event.weekDay }}</p>
+                <p class="description text-light">{{ event.weekDay }}</p>
                 <span class="sub-title" v-if="event.singer">{{ event.singer }}</span>
                 <span class="sub-title" v-else>Pendente</span>
-                <p class="description text-primary">{{ event.date }}</p>
+                <p class="description text-primary text-bold">{{ event.date }}</p>
                 <div class="options" @click="handleEdit(event)">
                   <ion-icon name="ellipsis-vertical-outline"></ion-icon>
                 </div>
@@ -274,8 +274,8 @@ export default ({
 .content {
   position: relative;
   padding: 10px 20px;
-  background-color: var(--bg-color);
-  box-shadow: -5px 5px 30px -5px rgba(0,0,0,0.1);
+  background-color: #f6f6f6;
+  /* box-shadow: -5px 5px 30px -5px rgba(0,0,0,0.1); */
   position: relative;
   border-radius: 10px;
 }
@@ -309,7 +309,7 @@ export default ({
     left: 57px;
     border: medium solid var(--primary);
     border-width: 10px 10px 10px 0;
-    border-color: transparent white transparent transparent;
+    border-color: transparent #f6f6f6 transparent transparent;
   }
 
 /* Make sure all circles are at the same spot */

@@ -5,7 +5,7 @@
                 <ion-icon name="chevron-back-outline" v-if="leftButton"></ion-icon>
             </div>
 
-            <div class="title">{{ title }}</div>
+            <div class="title text-dark">{{ title }}</div>
 
             <div class="right-button" @click="$emit('handleClick')">
                 <p class="description text-primary text-bold" v-if="rightButton">{{ rightButtonName }}</p>

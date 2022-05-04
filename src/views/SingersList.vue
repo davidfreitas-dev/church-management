@@ -12,10 +12,8 @@
         <div class="list" v-else>
           <div class="list-item" v-for="(singer, id) in singers" :key="id">
             <div class="list-content">
-              <a target="_blank" :href="`https://api.whatsapp.com/send?1=pt_BR&amp;phone=55${singer.contact}&amp;text=Olá,%20${singer.name}`">
-                <button class="btn-icon bg-success">
-                  <ion-icon name="logo-whatsapp"></ion-icon>
-                </button>
+              <a class="btn-icon bg-success" target="_blank" :href="`https://api.whatsapp.com/send?1=pt_BR&amp;phone=55${singer.contact}&amp;text=Olá,%20${singer.name}`">
+                <ion-icon name="logo-whatsapp"></ion-icon>
               </a>
               <div class="list-desc">
                 <span class="sub-title">{{ singer.name }}</span>
@@ -28,7 +26,7 @@
           </div>
         </div>
 
-        <ion-modal :is-open="showModal" :breakpoints="[0, 0.2, 0.7, 1]" :initialBreakpoint="0.7">
+        <ion-modal :is-open="showModal" :breakpoints="[0, 0.2, 0.8, 1]" :initialBreakpoint="0.8">
           <ion-content>
             <div class="modal-content">
               <p class="description text-light">Nome do cantor:</p>
