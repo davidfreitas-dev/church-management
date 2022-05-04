@@ -12,7 +12,7 @@
             <div class="wrapper right">
               <div class="content">
                 <p class="description text-light text-thin">{{ event.weekDay }}</p>
-                <span class="sub-title" v-if="event.preacher">{{ event.preacher }}</span>
+                <span class="sub-title" v-if="event.singer">{{ event.singer }}</span>
                 <span class="sub-title" v-else>Pendente</span>
                 <p class="description text-primary">{{ event.date }}</p>
                 <div class="options" @click="handleEdit(event)">
@@ -26,8 +26,8 @@
         <ion-modal :is-open="showModal" :breakpoints="[0, 0.2, 0.5, 1]" :initialBreakpoint="0.5">
           <ion-content>
             <div class="modal-content">
-              <p class="description text-light">Nome do pregador:</p>
-              <input type="text" class="form-input" v-model="preacher" @keyup.enter="handleConfirm"/>
+              <p class="description text-light">Nome do cantor:</p>
+              <input type="text" class="form-input" v-model="singer" @keyup.enter="handleConfirm"/>
               <button class="btn-large bg-success" @click="handleConfirm">Salvar</button>
               <button class="btn-link" @click="showModal = false">Cancelar</button>
             </div>
@@ -54,11 +54,11 @@ export default ({
   components: { IonContent, IonPage, IonModal, IonIcon, HeaderTop, LoaderBox, ToastMessage },
   data() {
     return {
-      pageTitle: 'Escala Pregadores',
-      backRoute: '/ancient',
+      pageTitle: 'Escala Cantores',
+      backRoute: '/music',
       timeline: { id: null, data: [] },
       event: null,
-      preacher: null,
+      singer: null,
       showModal: false,
       toastData: {}
     }
@@ -76,7 +76,7 @@ export default ({
     async loadData() {
       const self = this;
 
-      await this.$axios.get('preachers-timeline.json')
+      await this.$axios.get('singers-timeline.json')
         .then(async function(response) {          
           if (response.data) {
             console.log(response.data);
@@ -138,9 +138,9 @@ export default ({
       this.event = event;
     },
     handleConfirm() {
-      this.event.preacher = this.preacher;
+      this.event.singer = this.singer;
       this.showModal = false;
-      this.preacher = null;
+      this.singer = null;
       this.event = null;
     },
     handleToast(color, message) {
@@ -157,8 +157,8 @@ export default ({
 
       const method = timelineId ? 'patch' : 'post';
       const url = timelineId 
-        ? `preachers-timeline/${timelineId}.json` 
-        : 'preachers-timeline.json';
+        ? `singers-timeline/${timelineId}.json` 
+        : 'singers-timeline.json';
 
       this.$refs.loader.setOpen(true);
 

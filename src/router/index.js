@@ -31,6 +31,21 @@ const routes = [
     name: 'preachers-list',
     component: () => import('../views/PreachersList.vue')
   },
+  {
+    path: '/Music',
+    name: 'Music',
+    component: () => import('../views/MusicPage.vue')
+  },
+  {
+    path: '/singers-timeline',
+    name: 'singers-timeline',
+    component: () => import('../views/SingersTimeLine.vue')
+  },
+  {
+    path: '/singers-list',
+    name: 'singers-list',
+    component: () => import('../views/SingersList.vue')
+  },
 ]
 
 const router = createRouter({

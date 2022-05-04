@@ -8,16 +8,6 @@
           Departamentos
         </div>
         <div class="departments cards-wrapper">
-          <div class="card bg-success" @click="$router.push('/design-system')">
-            <div class="card-icon text-success">
-              <ion-icon name="cog"></ion-icon>
-            </div>
-            <div class="card-content">
-              <p class="text-success-light">Recurso</p>
-              <span>Design System</span>
-            </div>
-          </div>
-
           <div class="card bg-primary" @click="$router.push('/ancient')">
             <div class="card-icon text-primary">
               <ion-icon name="book"></ion-icon>
@@ -25,6 +15,16 @@
             <div class="card-content">
               <p class="text-primary-light">Ministério</p>
               <span>Ancionato</span>
+            </div>
+          </div>
+
+          <div class="card bg-success" @click="$router.push('/music')">
+            <div class="card-icon text-success">
+              <ion-icon name="musical-notes"></ion-icon>
+            </div>
+            <div class="card-content">
+              <p class="text-success-light">Ministério</p>
+              <span>Música</span>
             </div>
           </div>
         </div>
