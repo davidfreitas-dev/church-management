@@ -15,7 +15,9 @@
                 <span class="sub-title" v-if="event.preacher">{{ event.preacher }}</span>
                 <span class="sub-title" v-else>Pendente</span>
                 <p class="description text-primary">{{ event.date }}</p>
-                <div class="options" @click="handleEdit(event)">:</div>
+                <div class="options" @click="handleEdit(event)">
+                  <ion-icon name="ellipsis-vertical-outline"></ion-icon>
+                </div>
               </div>
             </div>
           </template>
@@ -41,7 +43,7 @@
 </template>
 
 <script>
-import { IonContent, IonPage, IonModal } from '@ionic/vue';
+import { IonContent, IonPage, IonModal, IonIcon } from '@ionic/vue';
 import { mapGetters } from 'vuex';
 import HeaderTop from '@/components/HeaderTop.vue';
 import LoaderBox from '@/components/LoaderBox.vue';
@@ -49,7 +51,7 @@ import ToastMessage from '@/components/ToastMessage.vue';
 
 export default ({
   name: 'HomePage',
-  components: { IonContent, IonPage, IonModal, HeaderTop, LoaderBox, ToastMessage },
+  components: { IonContent, IonPage, IonModal, IonIcon, HeaderTop, LoaderBox, ToastMessage },
   data() {
     return {
       pageTitle: 'Escala',
@@ -188,7 +190,7 @@ export default ({
 .timeline {
   position: relative;
   max-width: 1200px;
-  margin: 1rem auto;
+  margin: 1rem auto 3rem auto;
 }
 
 /* The actual timeline (the vertical ruler) */
@@ -282,9 +284,9 @@ export default ({
   position: absolute;
   top: 0;
   right: 0;
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: 700;
-  padding: .5rem 1.3rem;
+  padding: 1rem;
   color: var(--font-light);
 }
 

@@ -349,8 +349,7 @@ ion-app {
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: center;
-	margin-top: .75rem;
-	margin-bottom: 2rem;
+	margin: .75rem;
 }
 
 .list-item {
@@ -384,7 +383,7 @@ ion-app {
 }
 
 .list-action ion-icon {
-	color: var(--success);
-	font-size: 2rem;
+	color: #8c8c8c;
+	font-size: 1.5rem;
 	padding: .25rem;
-  }
+}
