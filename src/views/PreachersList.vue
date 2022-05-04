@@ -5,9 +5,11 @@
     
     <ion-content :fullscreen="true">
       <div class="container">
-        <p class="description text-center text-light" v-if="!preachers">Nenhum pregador encontrado</p>
+        <div class="description text-center text-light" v-if="!preachers">
+          Clique em NOVO para inserir um contato
+        </div>
 
-        <div class="list" v-if="preachers">
+        <div class="list" v-else>
           <div class="list-item" v-for="(preacher, id) in preachers" :key="id">
             <div class="list-content">
               <button class="btn-icon bg-primary" @click="handleEdit(id)">
@@ -78,10 +80,8 @@ export default ({
       const self = this;
 
       await this.$axios.get('preachers-list.json')
-        .then(async function(response) {          
-          if (response.data) {
-            self.preachers = response.data;
-          }
+        .then(async function(response) {
+          self.preachers = response.data ? response.data : null;
         })
         .catch(error => {
           self.handleToast('danger', 'Erro ao carregar os dados: ' + error);
@@ -112,9 +112,13 @@ export default ({
         .then(async function(response) {
           if (response.data) {
             self.showModal = false;
+
             self.handleToast('success', 'Salvo com sucesso!');
-            self.loadData();
-            self.handleClear();            
+            self.handleClear();
+            
+            setTimeout(() => {
+              self.loadData();
+            }, 500);
           }
         })
         .catch(error => {
@@ -134,9 +138,13 @@ export default ({
         .then(async function(response) {    
           if (!response.data) {
             self.showModal = false;
+            
             self.handleToast('success', 'Excluído com sucesso!');
-            self.loadData();
-            self.handleClear(); 
+            self.handleClear();
+            
+            setTimeout(() => {
+              self.loadData();
+            }, 500);
           }
         })
         .catch(error => {
