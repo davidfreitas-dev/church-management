@@ -13,6 +13,15 @@
               <span>Escala</span>
             </div>
           </div>
+
+          <div class="tag" @click="this.$router.push('/preachers-list')">            
+            <div class="tag-icon bg-success">
+              <ion-icon name="people"></ion-icon>
+            </div>
+            <div class="tag-content">
+              <span>Pregadores</span>
+            </div>
+          </div>
         </div>
       </div>
     </ion-content>

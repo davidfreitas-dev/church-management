@@ -98,12 +98,20 @@ ion-app {
 	font-weight: 700 !important;
 }
 
+.text-center {
+	text-align: center !important;
+}
+
+.text-left {
+	text-align: left !important;
+}
+
 .btn-icon {
-	margin: .5rem .25rem;
-	padding: .85rem;
-	font-size: 1.35rem;
-	letter-spacing: .5px;
+	width: 45px;
+	height: 45px;
 	border-radius: 10px;
+	margin-right: .25rem;
+	font-size: 1.35rem;
 }
 
 .btn-small {
@@ -336,3 +344,47 @@ ion-app {
 	padding-left: .5rem;
 }
 
+.list {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	margin-top: .75rem;
+	margin-bottom: 2rem;
+}
+
+.list-item {
+	width: 100%;
+	height: 60px;
+	margin: .25rem 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.list-content {
+	width: 85%;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.list-desc {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+}
+
+.list-action {
+	width: 15%;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.list-action ion-icon {
+	color: var(--success);
+	font-size: 2rem;
+	padding: .25rem;
+  }

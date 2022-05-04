@@ -1,33 +1,49 @@
 <template>
   <ion-page>
-    <header-top :title="pageTitle" :back-route="backRoute"
-      :left-button="true" :right-button="true" @handleClick="handleSave"></header-top>
+    <header-top :title="pageTitle" :back-route="backRoute" :left-button="true" :right-button="true" @handleClick="handleSave"></header-top>
     
     <ion-content :fullscreen="true">
       <div class="container">
-        <span class="title" v-if="monthName && year">{{ monthName }}, {{ year }}</span>
+        <p class="description text-center text-light" v-if="!preachers">Nenhum pregador encontrado</p>
 
-        <div class="timeline" v-if="timeline.data.length">
-          <template v-for="(event, i) in timeline.data" :key="i">
-            <div class="wrapper right">
-              <div class="content">
-                <p class="description text-light text-thin">{{ event.weekDay }}</p>
-                <span class="sub-title" v-if="event.preacher">{{ event.preacher }}</span>
-                <span class="sub-title" v-else>Pendente</span>
-                <p class="description text-primary">{{ event.date }}</p>
-                <div class="options" @click="handleEdit(event)">:</div>
+        <div class="list" v-if="preachers">
+          <div class="list-item" v-for="(preacher, id) in preachers" :key="id">
+            <div class="list-content">
+              <button class="btn-icon bg-primary" @click="handleEdit(id)">
+                <ion-icon name="person"></ion-icon>
+              </button><br />
+              <div class="list-desc">
+                <span class="sub-title">{{ preacher.name }}</span>
+                <span class="description">{{ preacher.from }}</span>
               </div>
             </div>
-          </template>
+            <div class="list-action">
+              <ion-icon name="logo-whatsapp"></ion-icon>
+            </div>
+          </div>
         </div>
 
-        <ion-modal :is-open="showModal" :breakpoints="[0, 0.2, 0.5, 1]" :initialBreakpoint="0.5">
+        <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+          <ion-fab-button @click="handleNew">
+            <ion-icon name="add"></ion-icon>
+          </ion-fab-button>
+        </ion-fab>
+
+        <ion-modal :is-open="showModal" :breakpoints="[0, 0.2, 0.5, 1]" :initialBreakpoint="0.9">
           <ion-content>
             <div class="modal-content">
               <p class="description text-light">Nome do pregador:</p>
-              <input type="text" class="form-input" v-model="preacher" @keyup.enter="handleConfirm"/>
-              <button class="btn-large bg-success" @click="handleConfirm">Salvar</button>
-              <button class="btn-link" @click="showModal = false">Cancelar</button>
+              <input type="text" class="form-input" v-model="preacher.name" @keyup.enter="$event.target.nextElementSibling.focus()"/>              
+              <p class="description text-light">Igreja:</p>
+              <input type="text" class="form-input" v-model="preacher.from" @keyup.enter="$event.target.nextElementSibling.focus()"/>
+              <p class="description text-light">Telefone:</p>
+              <input type="text" class="form-input" v-model="preacher.contact" @keyup.enter="handleSave"/>
+              
+              <div class="modal-actions">
+                <button class="btn-large bg-success" @click="handleSave">Salvar</button>
+                <button class="btn-large bg-danger" @click="handleDelete" v-if="preacherId">Excluir</button>
+                <button class="btn-link" @click="handleCancel">Cancelar</button>
+              </div>
             </div>
           </ion-content>
         </ion-modal>
@@ -41,132 +57,67 @@
 </template>
 
 <script>
-import { IonContent, IonPage, IonModal } from '@ionic/vue';
-import { mapGetters } from 'vuex';
+import { IonContent, IonPage, IonIcon, IonModal, IonFab, IonFabButton } from '@ionic/vue';
 import HeaderTop from '@/components/HeaderTop.vue';
 import LoaderBox from '@/components/LoaderBox.vue';
 import ToastMessage from '@/components/ToastMessage.vue';
 
 export default ({
-  name: 'HomePage',
-  components: { IonContent, IonPage, IonModal, HeaderTop, LoaderBox, ToastMessage },
+  name: 'PreachersList',
+  components: { IonContent, IonPage, IonIcon, IonModal, IonFab, IonFabButton, HeaderTop, LoaderBox, ToastMessage },
   data() {
     return {
-      pageTitle: 'Escala',
+      pageTitle: 'Pregadores',
       backRoute: '/ancient',
-      timeline: { id: null, data: [] },
-      event: null,
-      preacher: null,
+      preachers: null,
+      preacherId: null,
+      preacher: { name: null, from: null, contact: null },
       showModal: false,
       toastData: {}
     }
-  },
-  computed: {
-    ...mapGetters({
-      year: 'date/year',
-      months: 'date/months',
-      month: 'date/month',
-      monthName: 'date/monthName',
-      days: 'date/days'
-    })
   },
   methods: {
     async loadData() {
       const self = this;
 
-      await this.$axios.get('preachers-timeline.json')
+      await this.$axios.get('preachers-list.json')
         .then(async function(response) {          
           if (response.data) {
-            console.log(response.data);
-
-            const key = Object.keys(response.data)[0];
-            const data = response.data[key];
-            
-            self.timeline = { id: key, data: data };
-
-            return;
+            self.preachers = response.data;
           }
-
-          self.setTimeline();
         })
         .catch(error => {
           self.handleToast('danger', 'Erro ao carregar os dados: ' + error);
         });
     },
-    setTimeline() {
-      let timeline = [];
-
-      this.days.forEach(day => {
-        const weekDay = this.getDayOfWeek(day, this.monthName, this.year);
-        
-        let obj = {}
-
-        switch (weekDay) {
-          case 0:
-            obj.date = day + '/' + this.month;
-            obj.weekDay = 'Domingo';
-            timeline.push(obj);
-            break;
-          
-          case 3:
-            obj.date = day + '/' + this.month;
-            obj.weekDay = 'Quarta';
-            timeline.push(obj);
-            break;
-
-          case 6:
-            obj.date = day + '/' + this.month;
-            obj.weekDay = 'Sábado';
-            timeline.push(obj);
-            break;
-        
-          default:
-            break;
-        }        
-      });
-
-      this.timeline = { id: null, data: timeline };
-    },
-    getDayOfWeek(day, monthName, year) {
-      const date = new Date(`${monthName} ${day}, ${year} 00:00:00`);
-      return date.getDay();
-    },
-    handleEdit(event) {
+    handleNew() {
       this.showModal = true;
-      this.event = event;
     },
-    handleConfirm() {
-      this.event.preacher = this.preacher;
-      this.showModal = false;
-      this.preacher = null;
-      this.event = null;
-    },
-    handleToast(color, message) {
-      this.toastData = { 
-        color: color,
-        message: message
-      };
-
-      this.$refs.toast.setOpen(true);
+    handleEdit(id) {
+      this.preacherId = id;
+      this.preacher = { ...this.preachers[id] };
+      this.showModal = true;
     },
     async handleSave() {
       const self = this;
-      const timelineId = this.timeline.id;
+      const preacherId = this.preacherId;
 
-      const method = timelineId ? 'patch' : 'post';
-      const url = timelineId 
-        ? `preachers-timeline/${timelineId}.json` 
-        : 'preachers-timeline.json';
+      const method = preacherId ? 'patch' : 'post';
+      const url = preacherId 
+        ? `preachers-list/${preacherId}.json` 
+        : 'preachers-list.json';
 
       this.$refs.loader.setOpen(true);
 
-      const timeline = { ...this.timeline.data };
+      const preacher = { ...this.preacher };
 
-      await this.$axios[method](url, timeline)
+      await this.$axios[method](url, preacher)
         .then(async function(response) {
           if (response.data) {
+            self.showModal = false;
             self.handleToast('success', 'Salvo com sucesso!');
-            self.loadData();            
+            self.loadData();
+            self.handleClear();            
           }
         })
         .catch(error => {
@@ -175,7 +126,45 @@ export default ({
         .finally(() => {
           self.$refs.loader.setOpen(false);
         });
-    }
+    },
+    async handleDelete() {
+      this.$refs.loader.setOpen(true);
+
+      const self = this;
+      const id = this.preacherId;
+      
+      await this.$axios.delete(`/preachers-list/${id}.json`)
+        .then(async function(response) {    
+          if (!response.data) {
+            self.showModal = false;
+            self.handleToast('success', 'Excluído com sucesso!');
+            self.loadData();
+            self.handleClear(); 
+          }
+        })
+        .catch(error => {
+          self.handleToast('danger', 'Erro ao carregar os dados: ' + error);
+        })
+        .finally(() => {
+          self.$refs.loader.setOpen(false);
+        });
+    },
+    handleClear() {
+      this.preacherId = null;
+      this.preacher = { name: null, from: null, contact: null };
+    },
+    handleCancel() {
+      this.showModal = false;
+      this.handleClear();
+    },
+    handleToast(color, message) {
+      this.toastData = { 
+        color: color,
+        message: message
+      };
+
+      this.$refs.toast.setOpen(true);
+    },    
   },
   created () {
     this.loadData();
@@ -325,6 +314,15 @@ export default ({
   width: 90%;
   margin: 0 auto;
   margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-actions {
+  width: 100%;
+  padding: 1rem 0;
   display: flex;
   flex-direction: column;
   justify-content: center;

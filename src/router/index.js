@@ -26,6 +26,11 @@ const routes = [
     name: 'preachers-timeline',
     component: () => import('../views/PreachersTimeLine.vue')
   },
+  {
+    path: '/preachers-list',
+    name: 'preachers-list',
+    component: () => import('../views/PreachersList.vue')
+  },
 ]
 
 const router = createRouter({

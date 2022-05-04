@@ -105,6 +105,39 @@
             </div>
           </div>
         </div>
+
+        <!-- List -->
+        <div class="list">
+          <div class="list-item">
+            <div class="list-content">
+              <button class="btn-icon bg-primary">
+                <ion-icon name="person"></ion-icon>
+              </button><br />
+              <div class="list-desc">
+                <span class="sub-title">Mark Finley</span>
+                <span class="description">Central IASD - USA</span>
+              </div>
+            </div>
+            <div class="list-action">
+              <ion-icon name="logo-whatsapp"></ion-icon>
+            </div>
+          </div>
+
+          <div class="list-item">
+            <div class="list-content">
+              <button class="btn-icon bg-primary">
+                <ion-icon name="person"></ion-icon>
+              </button><br />
+              <div class="list-desc">
+                <span class="sub-title">Alejandro Bullón</span>
+                <span class="description">South America Division</span>
+              </div>
+            </div>
+            <div class="list-action">
+              <ion-icon name="logo-whatsapp"></ion-icon>
+            </div>
+          </div>
+        </div>
       </div>
     </ion-content>
   </ion-page>
