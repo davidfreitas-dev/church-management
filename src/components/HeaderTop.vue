@@ -8,7 +8,7 @@
             <div class="title">{{ title }}</div>
 
             <div class="right-button" @click="$emit('handleClick')">
-                <p class="description text-primary text-bold" v-if="rightButton">Salvar</p>
+                <p class="description text-primary text-bold" v-if="rightButton">{{ rightButtonName }}</p>
             </div>
         </nav>
     </div>
@@ -36,7 +36,10 @@ export default {
             type: String,
             default: '/'
         },
-
+        rightButtonName: {
+            type: String,
+            default: ''
+        }
     },
     components: {
         IonIcon,

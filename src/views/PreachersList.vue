@@ -1,6 +1,7 @@
 <template>
   <ion-page>
-    <header-top :title="pageTitle" :back-route="backRoute" :left-button="true" :right-button="true" @handleClick="handleSave"></header-top>
+    <header-top :title="pageTitle" :back-route="backRoute" :right-button-name="'Novo'"
+      :left-button="true" :right-button="true" @handleClick="handleNew"></header-top>
     
     <ion-content :fullscreen="true">
       <div class="container">
@@ -18,16 +19,12 @@
               </div>
             </div>
             <div class="list-action">
-              <ion-icon name="logo-whatsapp"></ion-icon>
+              <a target="_blank" :href="`https://api.whatsapp.com/send?1=pt_BR&amp;phone=55${preacher.contact}&amp;text=Olá,%20${preacher.name}`">
+                <ion-icon name="logo-whatsapp"></ion-icon>
+              </a>
             </div>
           </div>
         </div>
-
-        <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-          <ion-fab-button @click="handleNew">
-            <ion-icon name="add"></ion-icon>
-          </ion-fab-button>
-        </ion-fab>
 
         <ion-modal :is-open="showModal" :breakpoints="[0, 0.2, 0.5, 1]" :initialBreakpoint="0.9">
           <ion-content>
@@ -57,14 +54,14 @@
 </template>
 
 <script>
-import { IonContent, IonPage, IonIcon, IonModal, IonFab, IonFabButton } from '@ionic/vue';
+import { IonContent, IonPage, IonIcon, IonModal } from '@ionic/vue';
 import HeaderTop from '@/components/HeaderTop.vue';
 import LoaderBox from '@/components/LoaderBox.vue';
 import ToastMessage from '@/components/ToastMessage.vue';
 
 export default ({
   name: 'PreachersList',
-  components: { IonContent, IonPage, IonIcon, IonModal, IonFab, IonFabButton, HeaderTop, LoaderBox, ToastMessage },
+  components: { IonContent, IonPage, IonIcon, IonModal, HeaderTop, LoaderBox, ToastMessage },
   data() {
     return {
       pageTitle: 'Pregadores',
