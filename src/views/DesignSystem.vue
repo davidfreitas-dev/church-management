@@ -8,13 +8,20 @@
         <p class="title">Lorem ipsum dolor sit amet</p>
         <p class="sub-title">Lorem ipsum dolor sit amet</p>
         <p class="description">Lorem ipsum dolor sit amet</p>
-        
+
+        <!-- Select Options -->
+        <select class="btn-select" name="options" id="options">
+          <option value="opt1">Option 1</option>
+          <option value="opt2">Option 2</option>
+          <option value="opt3">Option 3</option>
+          <option value="opt4">Option 4</option>
+        </select>
+
         <!-- Buttons -->
         <button class="btn-icon bg-primary">
           <ion-icon name="rocket"></ion-icon>
         </button><br />
-        
-        <button class="btn-rounded">Rounded</button><br />
+
         <button class="btn-small bg-alert">Button</button><br />
         <button class="btn-default bg-danger">Button Default</button>
         <button class="btn-large bg-success">Button Large</button>

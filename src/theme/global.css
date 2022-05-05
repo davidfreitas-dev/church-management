@@ -163,17 +163,23 @@ ion-app {
 	background-color: transparent;
 }
 
-.btn-rounded {
+.btn-select {
 	width: auto;
-	height: 30px;
-	margin: .5rem .25rem;
+	height: 25px;
+	margin: .5rem;
 	padding: 0 .75rem;
-	color: var(--primary);
 	font-size: .75rem;
 	font-weight: 500;
 	letter-spacing: .5px;
-	border-radius: 15px;
+	border: none;
+	outline: none;
+	border-radius: 12.5px;
+	color: var(--primary);
 	background-color: #c8dbf3;
+}
+
+.btn-select option {
+	font-weight: 600 !important;
 }
 
 .bg-primary {
@@ -392,6 +398,12 @@ ion-app {
 	color: #8c8c8c;
 	font-size: 1.5rem;
 	padding: .25rem;
+}
+
+.timeline-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
 /* The actual timeline (the vertical ruler) */
