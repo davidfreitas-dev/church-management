@@ -27,11 +27,21 @@
 
           <div class="card bg-alert" @click="$router.push('/reception')">
             <div class="card-icon text-alert">
-              <ion-icon name="musical-notes"></ion-icon>
+              <ion-icon name="accessibility"></ion-icon>
             </div>
             <div class="card-content">
               <p class="text-alert-light">Ministério</p>
               <span>Recepção</span>
+            </div>
+          </div>
+
+          <div class="card bg-danger" @click="$router.push('/media')">
+            <div class="card-icon text-danger">
+              <ion-icon name="megaphone"></ion-icon>
+            </div>
+            <div class="card-content">
+              <p class="text-danger-light">Ministério</p>
+              <span>Mídia</span>
             </div>
           </div>
         </div>

@@ -61,6 +61,11 @@ const routes = [
     name: 'visitors-list',
     component: () => import('../views/VisitorsList.vue')
   },
+  {
+    path: '/media',
+    name: 'Media',
+    component: () => import('../views/MediaPage.vue')
+  },
 ]
 
 const router = createRouter({
