@@ -4,9 +4,6 @@
     
     <ion-content :fullscreen="true">
       <div class="container">
-        <div class="sub-title">
-          Departamentos
-        </div>
         <div class="departments cards-wrapper">
           <div class="card bg-primary" @click="$router.push('/ancient')">
             <div class="card-icon text-primary">
@@ -52,7 +49,7 @@ export default ({
   components: { IonContent,  IonPage, IonIcon, HeaderTop },
   data() {
     return {
-      pageTitle: 'Church Management'
+      pageTitle: 'Departamentos'
     }
   },
 });

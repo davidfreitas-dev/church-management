@@ -9,7 +9,7 @@
 
         <div class="timeline" v-if="timeline.data.length">
           <template v-for="(event, i) in timeline.data" :key="i">
-            <div class="wrapper right">
+            <div class="wrapper" :class="event.position">
               <div class="content">
                 <p class="description text-light">{{ event.weekDay }}</p>
                 <span class="sub-title" v-if="event.recepcionist">{{ event.recepcionist }}</span>
@@ -125,6 +125,18 @@ export default ({
           default:
             break;
         }        
+      });
+
+      timeline.forEach((element) => {
+        let index = timeline.indexOf(element);
+        
+        if (index % 2 !== 0) {
+          element.position = 'right';
+        }
+
+        if (index % 2 === 0) {
+          element.position = 'left';
+        }
       });
 
       this.timeline = { id: null, data: timeline };

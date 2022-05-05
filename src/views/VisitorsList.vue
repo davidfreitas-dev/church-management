@@ -29,7 +29,7 @@
         <ion-modal :is-open="showModal" :breakpoints="[0, 0.2, 0.8, 1]" :initialBreakpoint="0.8">
           <ion-content>
             <div class="modal-content">
-              <p class="description text-light">Nome do cantor:</p>
+              <p class="description text-light">Nome:</p>
               <input type="text" class="form-input" v-model="visitor.name" @keyup.enter="$event.target.nextElementSibling.focus()"/>
               <p class="description text-light">Telefone:</p>
               <input type="text" class="form-input" v-model="visitor.contact" @keyup.enter="handleSave"/>

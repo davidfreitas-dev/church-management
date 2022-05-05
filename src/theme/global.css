@@ -263,7 +263,7 @@ ion-app {
 }
 
 .card {
-	width: 46.5%;
+	width: 25%;
 	height: 145px;
 	margin: .35rem .25rem;
 	padding: 1rem;
@@ -500,6 +500,9 @@ ion-app {
 
 /* Media queries - Responsive timeline on screens less than 600px wide */
 @media screen and (max-width: 600px) {
+	.card {
+		width: 46.5%;
+	}
 	/* Place the timeline to the left */
 	.timeline::after {
 		left: 31px;
