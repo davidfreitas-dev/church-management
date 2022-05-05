@@ -7,7 +7,7 @@
       <div class="container">
         <div class="timeline-header">
           <span class="title" v-if="monthName && year">{{ monthName }}, {{ year }}</span>
-          <button class="btn-select" @click="handleSelect(filter)">
+          <button class="btn-select" @click="handleFilter(filter)">
             {{ filter }}
           </button>
         </div>
@@ -205,7 +205,7 @@ export default ({
           self.$refs.loader.setOpen(false);
         });
     },
-    handleSelect(filter) {
+    handleFilter(filter) {
       if (filter === 'Todos') {
         this.filter = 'Domingo';
       }

@@ -5,10 +5,15 @@
     
     <ion-content :fullscreen="true">
       <div class="container">
-        <span class="title" v-if="monthName && year">{{ monthName }}, {{ year }}</span>
+        <div class="timeline-header">
+          <span class="title" v-if="monthName && year">{{ monthName }}, {{ year }}</span>
+          <button class="btn-select" @click="handleFilter(filter)">
+            {{ filter }}
+          </button>
+        </div>
 
         <div class="timeline" v-if="timeline.data.length">
-          <template v-for="(event, i) in timeline.data" :key="i">
+          <template v-for="(event, i) in timelineData" :key="i">
             <div class="wrapper" :class="event.position">
               <div class="content">
                 <p class="description text-light">{{ event.weekDay }}</p>
@@ -60,7 +65,8 @@ export default ({
       event: null,
       recepcionist: null,
       showModal: false,
-      toastData: {}
+      toastData: {},
+      filter: 'Todos'
     }
   },
   computed: {
@@ -70,7 +76,16 @@ export default ({
       month: 'date/month',
       monthName: 'date/monthName',
       days: 'date/days'
-    })
+    }),
+    timelineData() {
+      return this.timeline.data.filter(obj => {
+        if (this.filter !== 'Todos') {
+          return obj.weekDay === this.filter;
+        } else {
+          return obj;
+        }
+      })
+    }
   },
   methods: {
     async loadData() {
@@ -189,6 +204,23 @@ export default ({
         .finally(() => {
           self.$refs.loader.setOpen(false);
         });
+    },
+    handleFilter(filter) {
+      if (filter === 'Todos') {
+        this.filter = 'Domingo';
+      }
+
+      if (filter === 'Domingo') {
+        this.filter = 'Quarta';
+      }
+
+      if (filter === 'Quarta') {
+        this.filter = 'Sábado';
+      }
+
+      if (filter === 'Sábado') {
+        this.filter = 'Todos';
+      }
     }
   },
   created () {
