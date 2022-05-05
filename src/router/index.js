@@ -32,7 +32,7 @@ const routes = [
     component: () => import('../views/PreachersList.vue')
   },
   {
-    path: '/Music',
+    path: '/music',
     name: 'Music',
     component: () => import('../views/MusicPage.vue')
   },
@@ -45,6 +45,21 @@ const routes = [
     path: '/singers-list',
     name: 'singers-list',
     component: () => import('../views/SingersList.vue')
+  },
+  {
+    path: '/reception',
+    name: 'Reception',
+    component: () => import('../views/ReceptionPage.vue')
+  },
+  {
+    path: '/receptionists-timeline',
+    name: 'receptionists-timeline',
+    component: () => import('../views/ReceptionistsTimeLine.vue')
+  },
+  {
+    path: '/visitors-list',
+    name: 'visitors-list',
+    component: () => import('../views/VisitorsList.vue')
   },
 ]
 

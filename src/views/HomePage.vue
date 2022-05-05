@@ -27,6 +27,16 @@
               <span>Música</span>
             </div>
           </div>
+
+          <div class="card bg-alert" @click="$router.push('/reception')">
+            <div class="card-icon text-alert">
+              <ion-icon name="musical-notes"></ion-icon>
+            </div>
+            <div class="card-content">
+              <p class="text-alert-light">Ministério</p>
+              <span>Recepção</span>
+            </div>
+          </div>
         </div>
       </div>
     </ion-content>
