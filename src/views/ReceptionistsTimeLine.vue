@@ -81,9 +81,8 @@ export default ({
       return this.timeline.data.filter(obj => {
         if (this.filter !== 'Todos') {
           return obj.weekDay === this.filter;
-        } else {
-          return obj;
         }
+        return obj;
       })
     }
   },
@@ -113,33 +112,20 @@ export default ({
     setTimeline() {
       let timeline = [];
 
-      this.days.forEach(day => {
-        const weekDay = this.getDayOfWeek(day, this.monthName, this.year);
-        
-        let obj = {}
+      const weekDays = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"];
 
-        switch (weekDay) {
-          case 0:
-            obj.date = day + '/' + this.month;
-            obj.weekDay = 'Domingo';
-            timeline.push(obj);
-            break;
-          
-          case 3:
-            obj.date = day + '/' + this.month;
-            obj.weekDay = 'Quarta';
-            timeline.push(obj);
-            break;
+      this.days.forEach(day => {         
+        let obj = {};
 
-          case 6:
-            obj.date = day + '/' + this.month;
-            obj.weekDay = 'Sábado';
-            timeline.push(obj);
-            break;
-        
-          default:
-            break;
-        }        
+        const date = new Date(`${this.monthName} ${day}, ${this.year} 00:00:00`);
+        const nameDay = weekDays[date.getDay()];
+
+        if (nameDay === 'Domingo' || nameDay === 'Quarta' || nameDay === 'Sábado') {
+          obj.date = String(day).padStart(2, '0') + '/' + String(this.month + 1).padStart(2, '0');
+          obj.weekDay = nameDay;
+          obj.outdated = obj.date < this.currentDate ? true : false;
+          timeline.push(obj);
+        }  
       });
 
       timeline.forEach((element) => {
@@ -155,10 +141,6 @@ export default ({
       });
 
       this.timeline = { id: null, data: timeline };
-    },
-    getDayOfWeek(day, monthName, year) {
-      const date = new Date(`${monthName} ${day}, ${year} 00:00:00`);
-      return date.getDay();
     },
     handleEdit(event) {
       this.showModal = true;
