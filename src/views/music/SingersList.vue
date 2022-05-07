@@ -29,11 +29,11 @@
         <ion-modal :is-open="showModal" :breakpoints="[0, 0.2, 0.9, 1]" :initialBreakpoint="0.9">
           <ion-content>
             <div class="modal-content">
-              <p class="text text-light">Nome do cantor:</p>
+              <p class="text-light">Nome do cantor:</p>
               <input type="text" class="form-input" v-model="singer.name" @keyup.enter="$event.target.nextElementSibling.focus()"/>              
-              <p class="text text-light">Igreja:</p>
+              <p class="text-light">Igreja:</p>
               <input type="text" class="form-input" v-model="singer.from" @keyup.enter="$event.target.nextElementSibling.focus()"/>
-              <p class="text text-light">Telefone:</p>
+              <p class="text-light">Telefone:</p>
               <input type="text" class="form-input" v-model="singer.contact" @keyup.enter="handleSave"/>
               
               <div class="modal-actions">
