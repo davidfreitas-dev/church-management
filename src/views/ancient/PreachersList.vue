@@ -26,7 +26,7 @@
           </div>
         </div>
 
-        <ion-modal :is-open="showModal" :breakpoints="[0, 0.2, 0.8, 1]" :initialBreakpoint="0.8">
+        <ion-modal :is-open="showModal" :breakpoints="[0, 0.2, 0.9, 1]" :initialBreakpoint="0.9">
           <ion-content>
             <div class="modal-content">
               <span class="text text-light">Nome do pregador:</span>
@@ -37,7 +37,7 @@
               <input type="text" class="form-input" v-model="preacher.contact" @keyup.enter="handleSave"/>
               
               <div class="modal-actions">
-                <button class="btn btn-full bg-success" @click="handleSave">Confirmar</button>
+                <button class="btn btn-full bg-success" @click="handleSave">Salvar</button>
                 <button class="btn btn-full bg-danger" @click="handleDelete" v-if="preacherId">Excluir</button>
                 <button class="btn btn-link" @click="handleCancel">Cancelar</button>
               </div>

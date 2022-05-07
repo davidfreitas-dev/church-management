@@ -33,8 +33,8 @@
             <div class="modal-content">
               <p class="description text-light">Nome do cantor:</p>
               <input type="text" class="form-input" v-model="singer" @keyup.enter="handleConfirm"/>
-              <button class="btn-large bg-success" @click="handleConfirm">Salvar</button>
-              <button class="btn-link" @click="showModal = false">Cancelar</button>
+              <button class="btn btn-full bg-success" @click="handleConfirm">Confirmar</button>
+              <button class="btn btn-link" @click="showModal = false">Cancelar</button>
             </div>
           </ion-content>
         </ion-modal>

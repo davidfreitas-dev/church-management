@@ -31,10 +31,10 @@
         <ion-modal :is-open="showModal" :breakpoints="[0, 0.2, 0.5, 1]" :initialBreakpoint="0.5">
           <ion-content>
             <div class="modal-content">
-              <p class="description text-light">Nome dos recepcionistas:</p>
+              <p class="text text-light">Nome dos recepcionistas:</p>
               <input type="text" class="form-input" v-model="recepcionist" @keyup.enter="handleConfirm"/>
-              <button class="btn-large bg-success" @click="handleConfirm">Salvar</button>
-              <button class="btn-link" @click="showModal = false">Cancelar</button>
+              <button class="btn btn-full bg-success bg-success" @click="handleConfirm">Confirmar</button>
+              <button class="btn btn-link" @click="showModal = false">Cancelar</button>
             </div>
           </ion-content>
         </ion-modal>

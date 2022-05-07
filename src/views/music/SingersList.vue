@@ -26,7 +26,7 @@
           </div>
         </div>
 
-        <ion-modal :is-open="showModal" :breakpoints="[0, 0.2, 0.8, 1]" :initialBreakpoint="0.8">
+        <ion-modal :is-open="showModal" :breakpoints="[0, 0.2, 0.9, 1]" :initialBreakpoint="0.9">
           <ion-content>
             <div class="modal-content">
               <p class="text text-light">Nome do cantor:</p>
