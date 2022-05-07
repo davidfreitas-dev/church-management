@@ -16,8 +16,8 @@
                 <ion-icon name="logo-whatsapp"></ion-icon>
               </a>
               <div class="list-desc">
-                <span class="sub-title">{{ visitor.name }}</span>
-                <span class="description">{{ visitor.contact }}</span>
+                <span class="text">{{ visitor.name }}</span>
+                <span class="text text-grey">{{ visitor.contact }}</span>
               </div>
             </div>
             <div class="list-action" @click="handleEdit(id)">              
@@ -29,15 +29,15 @@
         <ion-modal :is-open="showModal" :breakpoints="[0, 0.2, 0.8, 1]" :initialBreakpoint="0.8">
           <ion-content>
             <div class="modal-content">
-              <p class="description text-light">Nome:</p>
+              <p class="text text-light">Nome:</p>
               <input type="text" class="form-input" v-model="visitor.name" @keyup.enter="$event.target.nextElementSibling.focus()"/>
-              <p class="description text-light">Telefone:</p>
+              <p class="text text-light">Telefone:</p>
               <input type="text" class="form-input" v-model="visitor.contact" @keyup.enter="handleSave"/>
               
               <div class="modal-actions">
-                <button class="btn-large bg-success" @click="handleSave">Salvar</button>
-                <button class="btn-large bg-danger" @click="handleDelete" v-if="visitorId">Excluir</button>
-                <button class="btn-link" @click="handleCancel">Cancelar</button>
+                <button class="btn btn-full bg-success" @click="handleSave">Salvar</button>
+                <button class="btn btn-full bg-danger" @click="handleDelete" v-if="visitorId">Excluir</button>
+                <button class="btn btn-link" @click="handleCancel">Cancelar</button>
               </div>
             </div>
           </ion-content>

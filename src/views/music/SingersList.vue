@@ -16,8 +16,8 @@
                 <ion-icon name="logo-whatsapp"></ion-icon>
               </a>
               <div class="list-desc">
-                <span class="sub-title">{{ singer.name }}</span>
-                <span class="description">{{ singer.from }}</span>
+                <span class="text">{{ singer.name }}</span>
+                <span class="text text-grey">{{ singer.from }}</span>
               </div>
             </div>
             <div class="list-action" @click="handleEdit(id)">              
@@ -29,17 +29,17 @@
         <ion-modal :is-open="showModal" :breakpoints="[0, 0.2, 0.8, 1]" :initialBreakpoint="0.8">
           <ion-content>
             <div class="modal-content">
-              <p class="description text-light">Nome do cantor:</p>
+              <p class="text text-light">Nome do cantor:</p>
               <input type="text" class="form-input" v-model="singer.name" @keyup.enter="$event.target.nextElementSibling.focus()"/>              
-              <p class="description text-light">Igreja:</p>
+              <p class="text text-light">Igreja:</p>
               <input type="text" class="form-input" v-model="singer.from" @keyup.enter="$event.target.nextElementSibling.focus()"/>
-              <p class="description text-light">Telefone:</p>
+              <p class="text text-light">Telefone:</p>
               <input type="text" class="form-input" v-model="singer.contact" @keyup.enter="handleSave"/>
               
               <div class="modal-actions">
-                <button class="btn-large bg-success" @click="handleSave">Salvar</button>
-                <button class="btn-large bg-danger" @click="handleDelete" v-if="singerId">Excluir</button>
-                <button class="btn-link" @click="handleCancel">Cancelar</button>
+                <button class="btn btn-full bg-success" @click="handleSave">Salvar</button>
+                <button class="btn btn-full bg-danger" @click="handleDelete" v-if="singerId">Excluir</button>
+                <button class="btn btn-link" @click="handleCancel">Cancelar</button>
               </div>
             </div>
           </ion-content>

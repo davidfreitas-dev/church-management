@@ -6,8 +6,8 @@
     <ion-content :fullscreen="true">
       <div class="container">
         <div class="timeline-header">
-          <span class="title" v-if="monthName && year">{{ monthName }}, {{ year }}</span>
-          <button class="btn-select" @click="handleFilter(filter)">
+          <span class="text" v-if="monthName && year">{{ monthName }}, {{ year }}</span>
+          <button class="btn-rounded" @click="handleFilter(filter)">
             {{ filter }}
           </button>
         </div>
@@ -16,10 +16,10 @@
           <template v-for="(event, i) in timelineData" :key="i">
             <div class="wrapper" :class="event.position">
               <div class="content">
-                <p class="description text-light">{{ event.weekDay }}</p>
-                <span class="sub-title" v-if="event.singer">{{ event.singer }}</span>
-                <span class="sub-title" v-else>Pendente</span>
-                <p class="description text-primary text-bold">{{ event.date }}</p>
+                <p class="text-light">{{ event.weekDay }}</p>
+                <p class="text" v-if="event.singer">{{ event.singer }}</p>
+                <p class="text" v-else>Pendente</p>
+                <p class="text-primary text-bold">{{ event.date }}</p>
                 <div class="options" @click="handleEdit(event)">
                   <ion-icon name="ellipsis-vertical-outline"></ion-icon>
                 </div>
