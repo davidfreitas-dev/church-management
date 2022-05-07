@@ -106,31 +106,31 @@
         <div class="list">
           <div class="list-item">
             <div class="list-content">
-              <button class="btn-icon bg-primary">
-                <ion-icon name="person"></ion-icon>
+              <button class="btn-icon bg-success">
+                <ion-icon name="logo-whatsapp"></ion-icon>
               </button><br />
               <div class="list-desc">
-                <span class="sub-title">Mark Finley</span>
-                <span class="description">Central IASD - USA</span>
+                <span class="text">Mark Finley</span>
+                <span class="text text-grey">Central IASD - USA</span>
               </div>
             </div>
             <div class="list-action">
-              <ion-icon name="logo-whatsapp"></ion-icon>
+              <ion-icon name="ellipsis-vertical-outline"></ion-icon>
             </div>
           </div>
 
           <div class="list-item">
             <div class="list-content">
-              <button class="btn-icon bg-primary">
-                <ion-icon name="person"></ion-icon>
+              <button class="btn-icon bg-success">
+                <ion-icon name="logo-whatsapp"></ion-icon>
               </button><br />
               <div class="list-desc">
-                <span class="sub-title">Alejandro Bullón</span>
-                <span class="description">South America Division</span>
+                <span class="text">Alejandro Bullon</span>
+                <span class="text text-grey">IASD South America</span>
               </div>
             </div>
             <div class="list-action">
-              <ion-icon name="logo-whatsapp"></ion-icon>
+              <ion-icon name="ellipsis-vertical-outline"></ion-icon>
             </div>
           </div>
         </div>
@@ -156,5 +156,7 @@ export default ({
 </script>
 
 <style scoped>
-
+.container {
+  margin-bottom: 3rem;
+}
 </style>
