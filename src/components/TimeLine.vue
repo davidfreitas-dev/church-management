@@ -33,14 +33,6 @@ export default {
 </script>
 
 <style scoped>
-
-
-.timeline-header {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-
 /* The actual timeline (the vertical ruler) */
 .timeline {
 	position: relative;
@@ -130,7 +122,7 @@ export default {
 	position: relative;
 	padding: 10px 20px;
 	background-color: #fff;
-	/* box-shadow: -5px 5px 30px -5px rgba(0,0,0,0.1); */
+	box-shadow: 5px 5px 25px -5px rgba(0,0,0,0.1);
 	position: relative;
 	border-radius: 10px;
 }

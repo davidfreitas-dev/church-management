@@ -343,6 +343,13 @@ p {
 	--ionicon-stroke-width: 3rem;
 }
 
+
+.timeline-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
 /* Media queries - Responsive timeline on screens less than 600px wide */
 @media screen and (max-width: 600px) {
 	.card {

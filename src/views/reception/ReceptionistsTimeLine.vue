@@ -12,7 +12,7 @@
           </button>
         </div>
 
-        <time-line :timeline="timeline.data" @handleClick="handleEdit"></time-line>
+        <time-line :timeline="timelineData" @handleClick="handleEdit"></time-line>
 
         <ion-modal :is-open="showModal" :breakpoints="[0, 0.2, 0.5, 1]" :initialBreakpoint="0.5">
           <ion-content>
