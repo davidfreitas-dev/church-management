@@ -19,7 +19,7 @@
             <div class="modal-content">
               <p class="text-light">Nome do pregador:</p>
               <input type="text" class="form-input" v-model="name" @keyup.enter="handleConfirm"/>
-              <button class="btn btn-full bg-success" @click="handleConfirm">Confirmar</button>
+              <button class="btn btn-full bg-primary" @click="handleConfirm">Confirmar</button>
               <button class="btn btn-link" @click="showModal = false">Cancelar</button>
             </div>
           </ion-content>

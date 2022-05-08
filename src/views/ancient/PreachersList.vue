@@ -37,7 +37,7 @@
               <input type="text" class="form-input" v-model="preacher.contact" @keyup.enter="handleSave"/>
               
               <div class="modal-actions">
-                <button class="btn btn-full bg-success" @click="handleSave">Salvar</button>
+                <button class="btn btn-full bg-primary" @click="handleSave">Salvar</button>
                 <button class="btn btn-full bg-danger" @click="handleDelete" v-if="preacherId">Excluir</button>
                 <button class="btn btn-link" @click="handleCancel">Cancelar</button>
               </div>
