@@ -75,6 +75,8 @@ export default ({
   },
   methods: {
     async loadData() {
+      this.$refs.loader.setOpen(true);
+      
       const self = this;
 
       await this.$axios.get('singers-timeline.json')
@@ -94,6 +96,9 @@ export default ({
         })
         .catch(error => {
           self.handleToast('danger', 'Erro ao carregar os dados: ' + error);
+        })
+        .finally(() => {
+          self.$refs.loader.setOpen(false);
         });
     },
     setTimeline() {
@@ -192,7 +197,7 @@ export default ({
       }
     }
   },
-  created () {
+  mounted () {
     this.loadData();
   },
 });
