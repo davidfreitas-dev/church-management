@@ -32,7 +32,7 @@
               <p class="text-light">Nome:</p>
               <input type="text" class="form-input" v-model="visitor.name" @keyup.enter="$event.target.nextElementSibling.focus()"/>
               <p class="text-light">Telefone:</p>
-              <input type="text" class="form-input" v-model="visitor.contact" @keyup.enter="handleSave"/>
+              <input type="number" class="form-input" v-model="visitor.contact" @keyup.enter="handleSave"/>
               
               <div class="modal-actions">
                 <button class="btn btn-full bg-primary" @click="handleSave">Salvar</button>
@@ -101,6 +101,8 @@ export default ({
         : 'visitors-list.json';
 
       this.$refs.loader.setOpen(true);
+
+      this.visitor.name = this.visitor.name.toLowerCase().replace(/(?:^|\s)\S/g, function(a) { return a.toUpperCase(); });
 
       const visitor = { ...this.visitor };
 

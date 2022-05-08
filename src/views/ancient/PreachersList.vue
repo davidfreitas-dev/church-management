@@ -34,7 +34,7 @@
               <span class="text-light">Igreja:</span>
               <input type="text" class="form-input" v-model="preacher.from" @keyup.enter="$event.target.nextElementSibling.focus()"/>
               <span class="text-light">Telefone:</span>
-              <input type="text" class="form-input" v-model="preacher.contact" @keyup.enter="handleSave"/>
+              <input type="number" class="form-input" v-model="preacher.contact" @keyup.enter="handleSave"/>
               
               <div class="modal-actions">
                 <button class="btn btn-full bg-primary" @click="handleSave">Salvar</button>
@@ -103,6 +103,9 @@ export default ({
         : 'preachers-list.json';
 
       this.$refs.loader.setOpen(true);
+
+      this.preacher.name = this.preacher.name.toLowerCase().replace(/(?:^|\s)\S/g, function(a) { return a.toUpperCase(); });
+      this.preacher.from = this.preacher.from.toLowerCase().replace(/(?:^|\s)\S/g, function(a) { return a.toUpperCase(); });
 
       const preacher = { ...this.preacher };
 

@@ -34,7 +34,7 @@
               <p class="text-light">Igreja:</p>
               <input type="text" class="form-input" v-model="singer.from" @keyup.enter="$event.target.nextElementSibling.focus()"/>
               <p class="text-light">Telefone:</p>
-              <input type="text" class="form-input" v-model="singer.contact" @keyup.enter="handleSave"/>
+              <input type="number" class="form-input" v-model="singer.contact" @keyup.enter="handleSave"/>
               
               <div class="modal-actions">
                 <button class="btn btn-full bg-primary" @click="handleSave">Salvar</button>
@@ -103,6 +103,9 @@ export default ({
         : 'singers-list.json';
 
       this.$refs.loader.setOpen(true);
+
+      this.singer.name = this.singer.name.toLowerCase().replace(/(?:^|\s)\S/g, function(a) { return a.toUpperCase(); });
+      this.singer.from = this.singer.from.toLowerCase().replace(/(?:^|\s)\S/g, function(a) { return a.toUpperCase(); });
 
       const singer = { ...this.singer };
 

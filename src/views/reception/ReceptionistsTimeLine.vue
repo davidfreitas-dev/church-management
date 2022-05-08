@@ -134,7 +134,7 @@ export default ({
       this.event = this.timeline.data[index];
     },
     handleConfirm() {
-      this.event.name = this.name;
+      this.event.name = this.name.toLowerCase().replace(/(?:^|\s)\S/g, function(a) { return a.toUpperCase(); });
       this.showModal = false;
       this.name = null;
       this.event = null;
