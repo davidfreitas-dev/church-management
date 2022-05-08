@@ -12,27 +12,13 @@
           </button>
         </div>
 
-        <div class="timeline" v-if="timeline.data.length">
-          <template v-for="(event, i) in timelineData" :key="i">
-            <div class="wrapper" :class="event.position">
-              <div class="content">
-                <p class="text-light">{{ event.weekDay }}</p>
-                <p class="text" v-if="event.preacher">{{ event.preacher }}</p>
-                <p class="text" v-else>Pendente</p>
-                <p class="text-primary text-bold">{{ event.date }}</p>
-                <div class="options" @click="handleEdit(event)">
-                  <ion-icon name="ellipsis-vertical-outline"></ion-icon>
-                </div>
-              </div>
-            </div>
-          </template>
-        </div>
+        <time-line :timeline="timeline.data" @handleClick="handleEdit"></time-line>
 
         <ion-modal :is-open="showModal" :breakpoints="[0, 0.2, 0.5, 1]" :initialBreakpoint="0.5">
           <ion-content>
             <div class="modal-content">
               <p class="text-light">Nome do pregador:</p>
-              <input type="text" class="form-input" v-model="preacher" @keyup.enter="handleConfirm"/>
+              <input type="text" class="form-input" v-model="name" @keyup.enter="handleConfirm"/>
               <button class="btn btn-full bg-success" @click="handleConfirm">Confirmar</button>
               <button class="btn btn-link" @click="showModal = false">Cancelar</button>
             </div>
@@ -48,22 +34,23 @@
 </template>
 
 <script>
-import { IonContent, IonPage, IonModal, IonIcon } from '@ionic/vue';
+import { IonContent, IonPage, IonModal } from '@ionic/vue';
 import { mapGetters } from 'vuex';
 import HeaderTop from '@/components/HeaderTop.vue';
+import TimeLine from '@/components/TimeLine.vue';
 import LoaderBox from '@/components/LoaderBox.vue';
 import ToastMessage from '@/components/ToastMessage.vue';
 
 export default ({
   name: 'HomePage',
-  components: { IonContent, IonPage, IonModal, IonIcon, HeaderTop, LoaderBox, ToastMessage },
+  components: { IonContent, IonPage, IonModal, HeaderTop, TimeLine, LoaderBox, ToastMessage },
   data() {
     return {
       pageTitle: 'Escala Pregadores',
       backRoute: '/ancient',
       timeline: { id: null, data: [] },
       event: null,
-      preacher: null,
+      name: null,
       showModal: false,
       toastData: {},
       filter: 'Todos'
@@ -146,14 +133,14 @@ export default ({
 
       this.timeline = { id: null, data: timeline };
     },
-    handleEdit(event) {
+    handleEdit(index) {
       this.showModal = true;
-      this.event = event;
+      this.event = this.timeline.data[index];
     },
     handleConfirm() {
-      this.event.preacher = this.preacher;
+      this.event.name = this.name;
       this.showModal = false;
-      this.preacher = null;
+      this.name = null;
       this.event = null;
     },
     handleToast(color, message) {
