@@ -12,7 +12,7 @@
 
         <!-- Buttons -->
         <button class="btn-rounded">Rounded</button><br />
-        <button class="btn btn-link">Button Link</button><br />
+        <button class="btn btn-link btn-full">Button Link</button><br />
         <button class="btn bg-primary">Button</button><br />
         <button class="btn btn-full bg-danger">Button Full</button>
 

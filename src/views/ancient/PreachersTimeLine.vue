@@ -16,11 +16,14 @@
 
         <ion-modal :is-open="showModal" :breakpoints="[0, 0.2, 0.5, 1]" :initialBreakpoint="0.5">
           <ion-content>
+            <div class="modal-header">
+              <span @click="showModal = false">Fechar</span>
+            </div>
+
             <div class="modal-content">
               <p class="text-light">Nome do pregador:</p>
               <input type="text" class="form-input" v-model="name" @keyup.enter="handleConfirm"/>
               <button class="btn btn-full bg-primary" @click="handleConfirm">Confirmar</button>
-              <button class="btn btn-link" @click="showModal = false">Cancelar</button>
             </div>
           </ion-content>
         </ion-modal>
@@ -208,13 +211,5 @@ export default ({
 </script>
 
 <style scoped>
-.modal-content {
-  width: 90%;
-  margin: 0 auto;
-  margin-top: 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
+
 </style>

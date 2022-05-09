@@ -26,21 +26,26 @@
           </div>
         </div>
 
-        <ion-modal :is-open="showModal" :breakpoints="[0, 0.2, 0.9, 1]" :initialBreakpoint="0.9">
+        <ion-modal :is-open="showModal" :breakpoints="[0, 0.99, 1]" :initialBreakpoint="0.99">
           <ion-content>
+            <div class="modal-header">
+              <span @click="handleCancel">Fechar</span>
+            </div>
+            
             <div class="modal-content">
-              <span class="text-light">Nome do pregador:</span>
+              <p class="text-light">Nome do pregador:</p>
               <input type="text" class="form-input" v-model="preacher.name" @keyup.enter="$event.target.nextElementSibling.focus()"/>              
-              <span class="text-light">Igreja:</span>
+              
+              <p class="text-light">Igreja:</p>
               <input type="text" class="form-input" v-model="preacher.from" @keyup.enter="$event.target.nextElementSibling.focus()"/>
-              <span class="text-light">Telefone:</span>
+              
+              <p class="text-light">Telefone:</p>
               <input type="number" class="form-input" v-model="preacher.contact" @keyup.enter="handleSave"/>
               
               <div class="modal-actions">
                 <button class="btn btn-full bg-primary" @click="handleSave">Salvar</button>
                 <button class="btn btn-full bg-danger" @click="handleDelete" v-if="preacherId">Excluir</button>
-                <button class="btn btn-link" @click="handleCancel">Cancelar</button>
-              </div>
+              </div>              
             </div>
           </ion-content>
         </ion-modal>
@@ -179,22 +184,5 @@ export default ({
 </script>
 
 <style scoped>
-.modal-content {
-  width: 90%;
-  margin: 0 auto;
-  margin-top: 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
 
-.modal-actions {
-  width: 100%;
-  padding: 1rem 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
 </style>
