@@ -6,13 +6,18 @@
 import { IonLoading } from '@ionic/vue';
 
 export default ({
+  props: {
+    message: {
+      type: String,
+      default: 'Aguarde...'
+    },
+  },
   components: { 
     IonLoading 
   },
   data() {
     return {
-      isOpenRef: false,
-      message: 'Aguarde...'
+      isOpenRef: false
     }
   },
   methods: {

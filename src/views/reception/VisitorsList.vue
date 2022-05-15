@@ -1,7 +1,6 @@
 <template>
   <ion-page>
-    <header-top :title="pageTitle" :back-route="backRoute" :right-button-name="'Novo'"
-      :left-button="true" :right-button="true" @handleClick="handleNew"></header-top>
+    <header-top :title="pageTitle" :action="true" @handleClick="handleNew"></header-top>
     
     <ion-content :fullscreen="true">
       <div class="container">

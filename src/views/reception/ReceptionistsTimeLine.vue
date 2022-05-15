@@ -1,7 +1,6 @@
 <template>
   <ion-page>
-    <header-top :title="pageTitle" :back-route="backRoute" :right-button-name="'Salvar'"
-      :left-button="true" :right-button="true" @handleClick="handleSave"></header-top>
+    <header-top :title="pageTitle" @handleClick="handleSave"></header-top>
     
     <ion-content :fullscreen="true">
       <div class="container">

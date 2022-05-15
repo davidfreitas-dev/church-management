@@ -1,84 +1,55 @@
 <template>
-  <div class="header">
-    <nav class="nav">
-      <div class="left-button" @click="handleBack">
-        <ion-icon name="chevron-back-outline" v-if="leftButton"></ion-icon>
-      </div>
-
-      <div class="text text-dark">{{ title }}</div>
-
-      <div class="right-button" @click="$emit('handleClick')">
-        <p class="description text-primary text-bold" v-if="rightButton">{{ rightButtonName }}</p>
-      </div>
-    </nav>
-  </div>
+  <ion-header class="ion-no-border">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button 
+          icon="chevron-back-outline">
+        </ion-back-button>
+      </ion-buttons>
+      <ion-title class="header-title ion-text-center">
+        {{ title }}
+      </ion-title>
+      <ion-buttons slot="end">
+        <ion-icon name="add" class="icon ion-padding"
+          @click="$emit('handleClick')" v-if="action">
+        </ion-icon>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
 </template>
 
 <script>
-import { IonIcon } from '@ionic/vue';
+import { IonHeader, IonToolbar, IonButtons, IonBackButton, IonTitle, IonIcon } from '@ionic/vue';
 
 export default {
-  emits: ['handleClick'],
   props: {
     title: {
       type: String,
       default: ''
     },
-    leftButton: {
+    action: {
       type: Boolean,
       default: false
-    },
-    rightButton: {
-      type: Boolean,
-      default: false
-    },
-    backRoute: {
-      type: String,
-      default: '/'
-    },
-    rightButtonName: {
-      type: String,
-      default: ''
     }
   },
   components: {
-    IonIcon,
-  },
-  methods: {
-    handleBack() {
-      this.$router.push(this.backRoute);
-    }
-  },
+    IonHeader, IonToolbar, IonButtons, IonBackButton, IonTitle, IonIcon,
+  }
 }
 </script>
 
-<style socped>
-.left-button {
-  width: 50px;
-  height: 50px;
-  font-size: 1.5rem;
-  color: var(--font-dark);
-  background-color: transparent;
+<style scoped>
 
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+ion-title.header-title {
+  color: var(--font);
+  font-size: 1.15rem;
+  font-weight: 700;
 }
 
-.right-button {
-  width: 50px;
-  height: 50px;
-  
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.right-button ion-icon {
-  padding: .5rem;
-  font-size: 1.1rem;
-  border-radius: 10px;
+.icon {
+  font-size: 24px;
   color: var(--primary);
-  background-color: #c8dbf3;
+  --ionicon-stroke-width: 48px;
 }
+
 </style>

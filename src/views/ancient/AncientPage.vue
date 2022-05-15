@@ -1,6 +1,6 @@
 <template>
   <ion-page>
-    <header-top :left-button="true" :title="pageTitle" :back-route="backRoute"></header-top>
+    <header-top :title="pageTitle"></header-top>
     
     <ion-content :fullscreen="true">
       <div class="container">
