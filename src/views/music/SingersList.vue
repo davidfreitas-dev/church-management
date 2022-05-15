@@ -16,7 +16,7 @@
               </a>
               <div class="list-desc">
                 <span class="text">{{ singer.name }}</span>
-                <span class="text text-grey">{{ singer.from }}</span>
+                <span class="text text-grey text-thin">{{ singer.from }}</span>
               </div>
             </div>
             <div class="list-action" @click="handleEdit(id)">              

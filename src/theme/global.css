@@ -2,9 +2,9 @@
 
 :root {
 	--bg-color: #f4f6fc;
-	--font-dark: #2e384d;
-	--font-grey: #91a0b4;
-	--font-light: #bfc5d2;
+	--font: #2e384d;
+	--label: #91a0b4;
+	--light: #bfc5d2;
 	--primary: #2e5bff;
 	--secondary: #d5deff;
 	--success: #22cda0;
@@ -17,11 +17,6 @@
 	font-family: 'Lato', sans-serif;
 }
 
-ion-app {
-	margin-top: env(safe-area-inset-top);
-	margin-bottom: env(safe-area-inset-bottom)
-}
-
 ion-content {
 	--background: var(--bg-color);
 }
@@ -32,7 +27,7 @@ p {
 }
 
 .text {
-	color: var(--font-dark);
+	color: var(--font);
 	font-size: 1.15rem;
 	font-weight: 700;
 	padding: 0 .35rem;
@@ -43,11 +38,11 @@ p {
 }
 
 .text-grey {
-	color: var(--font-grey) !important;
+	color: var(--label) !important;
 }
 
 .text-light {
-	color: var(--font-light) !important;
+	color: var(--light) !important;
 }
 
 .text-primary {
@@ -102,7 +97,7 @@ p {
 }
 
 .btn-link {
-	color: var(--font-dark);
+	color: var(--font);
 	background-color: transparent;	
 }
 
@@ -167,7 +162,7 @@ p {
 	outline: none;
 	font-weight: 500;
 	border-radius: 5px;
-	border: 1.5px solid var(--font-light);
+	border: 1.5px solid var(--light);
 	background-color: var(--bg-color);
 }
 
@@ -291,8 +286,10 @@ p {
 	margin: .35rem 0;
 	padding: 1rem .75rem;
 	border-radius: 5px;
-	border-left: 5px solid var(--success);
+	border-left: 3.5px solid var(--success);
 	background-color: #fff;
+	box-shadow: 5px 5px 25px -5px rgba(0,0,0,0.1);
+	
 }
 
 .list-content {

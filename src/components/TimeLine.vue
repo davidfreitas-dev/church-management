@@ -134,7 +134,7 @@ export default {
 	font-size: 1rem;
 	font-weight: 700;
 	padding: 1rem;
-	color: var(--font-light);
+	color: var(--light);
 }
 
 /* Media queries - Responsive timeline on screens less than 600px wide */

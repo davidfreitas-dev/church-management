@@ -16,7 +16,7 @@
               </a>
               <div class="list-desc">
                 <span class="text">{{ visitor.name }}</span>
-                <span class="text text-grey">{{ visitor.contact }}</span>
+                <span class="text text-grey text-thin">{{ visitor.contact }}</span>
               </div>
             </div>
             <div class="list-action" @click="handleEdit(id)">              
