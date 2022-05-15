@@ -9,7 +9,7 @@
       <ion-title class="header-title ion-text-center">
         {{ title }}
       </ion-title>
-      <ion-buttons slot="end">
+      <ion-buttons slot="end" :class="{ empty: !action }">
         <ion-icon name="add" class="icon ion-padding"
           @click="$emit('handleClick')" v-if="action">
         </ion-icon>
@@ -46,7 +46,11 @@ ion-title.header-title {
   font-weight: 700;
 }
 
-.icon {
+ion-buttons.empty {
+  width: 3rem;
+}
+
+ion-icon.icon {
   font-size: 24px;
   color: var(--primary);
   --ionicon-stroke-width: 48px;
