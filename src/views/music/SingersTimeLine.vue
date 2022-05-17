@@ -1,6 +1,6 @@
 <template>
   <ion-page>
-    <header-top :title="pageTitle" @handleClick="handleSave"></header-top>
+    <header-top :title="pageTitle" :save-button="true" @handleClick="handleSave"></header-top>
     
     <ion-content :fullscreen="true">
       <div class="container">

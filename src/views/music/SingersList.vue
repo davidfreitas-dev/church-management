@@ -1,11 +1,11 @@
 <template>
   <ion-page>
-    <header-top :title="pageTitle" :action="true" @handleClick="handleNew"></header-top>
+    <header-top :title="pageTitle" :add-button="true" @handleClick="handleNew"></header-top>
     
     <ion-content :fullscreen="true">
       <div class="container">
         <div class="description text-center text-light" v-if="!singers">
-          Clique em NOVO para inserir um contato
+          Clique em "+" para adicionar um contato
         </div>
 
         <div class="list" v-else>
