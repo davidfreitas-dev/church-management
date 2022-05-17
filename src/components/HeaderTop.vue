@@ -1,7 +1,6 @@
 <template>
   <ion-header class="ion-no-border">
     <ion-toolbar>
-
       <ion-buttons slot="start" class="defaultWidth">
         <ion-back-button icon="chevron-back-outline"></ion-back-button>
       </ion-buttons>
@@ -10,16 +9,12 @@
         {{ title }}
       </ion-title>
 
-      <ion-buttons slot="end" :class="{ defaultWidth: !addButton && !saveButton }">
-        
+      <ion-buttons slot="end" :class="{ defaultWidth: !addButton && !saveButton }">        
         <ion-icon name="add" class="icon ion-padding" 
-          @click="handleClick" v-if="addButton"></ion-icon>
-        
+          @click="handleClick" v-if="addButton"></ion-icon>        
         <ion-icon name="checkmark" class="icon ion-padding" 
           @click="handleClick" v-if="saveButton"></ion-icon>
-
       </ion-buttons>
-
     </ion-toolbar>
   </ion-header>
 </template>

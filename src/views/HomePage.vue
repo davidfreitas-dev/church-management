@@ -5,43 +5,43 @@
     <ion-content :fullscreen="true">
       <div class="container">
         <div class="departments cards-wrapper">
-          <div class="card bg-primary" @click="$router.push('/ancient')">
+          <div class="card" @click="$router.push('/ancient')">
             <div class="card-icon text-primary">
               <ion-icon name="book"></ion-icon>
             </div>
             <div class="card-content">
-              <p class="text-primary-light">Ministério</p>
-              <span>Ancionato</span>
+              <p class="text-grey">Ministério</p>
+              <span class="text-primary">Ancionato</span>
             </div>
           </div>
 
-          <div class="card bg-success" @click="$router.push('/music')">
-            <div class="card-icon text-success">
+          <div class="card" @click="$router.push('/music')">
+            <div class="card-icon text-primary">
               <ion-icon name="musical-notes"></ion-icon>
             </div>
             <div class="card-content">
-              <p class="text-success-light">Ministério</p>
-              <span>Música</span>
+              <p class="text-grey">Ministério</p>
+              <span class="text-primary">Música</span>
             </div>
           </div>
 
-          <div class="card bg-alert" @click="$router.push('/reception')">
-            <div class="card-icon text-alert">
+          <div class="card" @click="$router.push('/reception')">
+            <div class="card-icon text-primary">
               <ion-icon name="accessibility"></ion-icon>
             </div>
             <div class="card-content">
-              <p class="text-alert-light">Ministério</p>
-              <span>Recepção</span>
+              <p class="text-grey">Ministério</p>
+              <span class="text-primary">Recepção</span>
             </div>
           </div>
 
-          <div class="card bg-danger" @click="$router.push('/media')">
-            <div class="card-icon text-danger">
+          <div class="card" @click="$router.push('/media')">
+            <div class="card-icon text-primary">
               <ion-icon name="megaphone"></ion-icon>
             </div>
             <div class="card-content">
-              <p class="text-danger-light">Ministério</p>
-              <span>Mídia</span>
+              <p class="text-grey">Ministério</p>
+              <span class="text-primary">Mídia</span>
             </div>
           </div>
         </div>
