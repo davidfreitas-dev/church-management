@@ -195,10 +195,10 @@ p {
 }
 
 .card-icon {
-	width: 55px;
-	height: 55px;
 	font-size: 1.75rem;
-	border-radius: 27.5px;
+	width: 60px;
+	height: 60px;
+	border-radius: 30px;
 	background-color: var(--bg-color);
 
 	display: flex;
@@ -207,7 +207,7 @@ p {
 }
 
 .card-content {
-	height: 65px;
+	height: 45px;
 	color: var(--font-white);
 
 	display: flex;
